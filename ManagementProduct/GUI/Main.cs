@@ -19,12 +19,17 @@ namespace ManagementProduct.GUI
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+            btnMax.PerformClick();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

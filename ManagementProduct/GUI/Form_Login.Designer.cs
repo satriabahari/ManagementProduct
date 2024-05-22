@@ -69,14 +69,14 @@
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(700, 120);
             label1.Name = "label1";
-            label1.Size = new Size(220, 46);
+            label1.Size = new Size(297, 54);
             label1.TabIndex = 5;
             label1.Text = "Welcome Back";
             // 
             // txtUser
             // 
             txtUser.AutoRoundedCorners = true;
-            txtUser.BorderRadius = 20;
+            txtUser.BorderRadius = 21;
             txtUser.CustomizableEdges = customizableEdges3;
             txtUser.DefaultText = "";
             txtUser.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -100,7 +100,7 @@
             // 
             btnLogin.Animated = true;
             btnLogin.AutoRoundedCorners = true;
-            btnLogin.BorderRadius = 25;
+            btnLogin.BorderRadius = 26;
             btnLogin.CustomizableEdges = customizableEdges5;
             btnLogin.DisabledState.BorderColor = Color.DarkGray;
             btnLogin.DisabledState.CustomBorderColor = Color.DarkGray;
@@ -115,6 +115,7 @@
             btnLogin.Size = new Size(300, 55);
             btnLogin.TabIndex = 2;
             btnLogin.Text = "Login";
+            btnLogin.Click += btnLogin_Click;
             // 
             // label2
             // 
@@ -122,7 +123,7 @@
             label2.Font = new Font("Segoe UI", 12F);
             label2.Location = new Point(700, 220);
             label2.Name = "label2";
-            label2.Size = new Size(105, 28);
+            label2.Size = new Size(126, 32);
             label2.TabIndex = 4;
             label2.Text = "Username:";
             // 
@@ -132,14 +133,14 @@
             label3.Font = new Font("Segoe UI", 12F);
             label3.Location = new Point(700, 320);
             label3.Name = "label3";
-            label3.Size = new Size(99, 28);
+            label3.Size = new Size(116, 32);
             label3.TabIndex = 3;
             label3.Text = "Password:";
             // 
             // txtPass
             // 
             txtPass.AutoRoundedCorners = true;
-            txtPass.BorderRadius = 20;
+            txtPass.BorderRadius = 21;
             txtPass.CustomizableEdges = customizableEdges7;
             txtPass.DefaultText = "";
             txtPass.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);

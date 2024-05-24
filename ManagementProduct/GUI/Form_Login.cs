@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManagementProduct.Class;
 
 namespace ManagementProduct.GUI
 {
     public partial class Form_Login : Form
     {
+        private Users userManager;
         public Form_Login()
         {
             InitializeComponent();
+            userManager = new Users();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -22,24 +25,18 @@ namespace ManagementProduct.GUI
             string username = txtUser.Text;
             string password = txtPass.Text;
 
-            // Replace with your actual credentials
-            string correctUsername = "admin";
-            string correctPassword = "password123";
+            if (userManager.AuthenticateUser(username, password))
+            {
+                MessageBox.Show("Login successful!");
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show("Please enter both username and password.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (username == correctUsername && password == correctPassword)
-            {
-                // Open Main form
-                Main mainForm = new Main();
-                mainForm.Show();
-                this.Hide();
+                // Lanjutkan ke form lain
+                Main formMain = new Main();
+                formMain.Show();
+                this.Hide(); // Sembunyikan form login
             }
             else
             {
-                MessageBox.Show("Incorrect username or password.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Login failed. Please check your username and password.");
             }
         }
     }

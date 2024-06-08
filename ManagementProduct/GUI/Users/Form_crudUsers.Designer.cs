@@ -297,14 +297,14 @@
         public Label label2;
         public Label label1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private DataGridViewTextBoxColumn dgvNo;
-        private DataGridViewTextBoxColumn dgvid;
-        private DataGridViewTextBoxColumn dgvUsername;
-        private DataGridViewTextBoxColumn dgvEmail;
-        private DataGridViewTextBoxColumn dgvPhone;
-        private DataGridViewTextBoxColumn dgvPass;
-        private DataGridViewImageColumn dgvEdit;
-        private DataGridViewImageColumn dgvDel;
+        public Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        public DataGridViewTextBoxColumn dgvNo;
+        public DataGridViewTextBoxColumn dgvid;
+        public DataGridViewTextBoxColumn dgvUsername;
+        public DataGridViewTextBoxColumn dgvEmail;
+        public DataGridViewTextBoxColumn dgvPhone;
+        public DataGridViewTextBoxColumn dgvPass;
+        public DataGridViewImageColumn dgvEdit;
+        public DataGridViewImageColumn dgvDel;
     }
 }

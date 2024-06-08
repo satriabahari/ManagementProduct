@@ -73,6 +73,16 @@ namespace ManagementProduct.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bulan {
+            get {
+                object obj = ResourceManager.GetObject("bulan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap category {
             get {
                 object obj = ResourceManager.GetObject("category", resourceCulture);
@@ -146,6 +156,16 @@ namespace ManagementProduct.Properties {
         internal static System.Drawing.Bitmap inbound {
             get {
                 object obj = ResourceManager.GetObject("inbound", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap light {
+            get {
+                object obj = ResourceManager.GetObject("light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

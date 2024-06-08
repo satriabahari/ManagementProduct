@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManagementProduct.Class;
 
 namespace ManagementProduct.GUI
 {
     public partial class Form_editUsers : Form
     {
         private int userId;
-        private string connectionString = "server=localhost;user=root;password=;database=management_product;";
+        private Users users;
 
         public event EventHandler UserUpdated;
 
@@ -22,6 +23,7 @@ namespace ManagementProduct.GUI
         {
             InitializeComponent();
             this.userId = userId;
+            users = new Users();
             LoadUserData();
         }
 
@@ -32,38 +34,25 @@ namespace ManagementProduct.GUI
 
         private void LoadUserData()
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            DataRow user = users.GetUserById(userId);
+            if (user != null)
             {
-                try
+                txtUsername.Text = user["username"].ToString();
+                txtEmail.Text = user["email"].ToString();
+                txtPhone.Text = user["phone"].ToString();
+                txtPassword.Text = user["password"].ToString();
+                if (user["image"] != DBNull.Value)
                 {
-                    conn.Open();
-                    string query = "SELECT username, email, phone, password, image FROM users WHERE id = @id";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", userId);
-
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    byte[] imageBytes = (byte[])user["image"];
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
                     {
-                        if (reader.Read())
-                        {
-                            txtUsername.Text = reader["username"].ToString();
-                            txtEmail.Text = reader["email"].ToString();
-                            txtPhone.Text = reader["phone"].ToString();
-                            txtPassword.Text = reader["password"].ToString();
-                            if (reader["image"] != DBNull.Value)
-                            {
-                                byte[] imageBytes = (byte[])reader["image"];
-                                using (MemoryStream ms = new MemoryStream(imageBytes))
-                                {
-                                    txtPic.Image = Image.FromStream(ms);
-                                }
-                            }
-                        }
+                        txtPic.Image = Image.FromStream(ms);
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message);
-                }
+            }
+            else
+            {
+                MessageBox.Show("User not found.");
             }
         }
 
@@ -81,28 +70,16 @@ namespace ManagementProduct.GUI
                 return;
             }
 
-            try
+            bool success = users.UpdateUser(userId, usernameValue, passwordValue, emailValue, phoneValue, imageValue);
+            if (success)
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string updateQuery = "UPDATE users SET username = @username, password = @password, email = @email, phone = @phone, image = @image WHERE id = @id";
-                    MySqlCommand cmd = new MySqlCommand(updateQuery, connection);
-                    cmd.Parameters.AddWithValue("@username", usernameValue);
-                    cmd.Parameters.AddWithValue("@password", passwordValue);
-                    cmd.Parameters.AddWithValue("@email", emailValue);
-                    cmd.Parameters.AddWithValue("@phone", phoneValue);
-                    cmd.Parameters.AddWithValue("@image", imageValue);
-                    cmd.Parameters.AddWithValue("@id", userId);
-                    cmd.ExecuteNonQuery();
-                }
-
                 MessageBox.Show("Data updated successfully.");
                 UserUpdated?.Invoke(this, EventArgs.Empty); // Trigger the event
+                this.Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error updating data: " + ex.Message);
+                MessageBox.Show("Error updating data.");
             }
         }
 

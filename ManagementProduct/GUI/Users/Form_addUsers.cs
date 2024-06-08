@@ -8,14 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using ManagementProduct.Class;
 
 namespace ManagementProduct.GUI
 {
     public partial class Form_addUsers : Form
     {
+        private Users users;
         public Form_addUsers()
         {
             InitializeComponent();
+            users = new Users();
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -49,57 +52,36 @@ namespace ManagementProduct.GUI
             }
         }
 
+
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            string server = "localhost"; // Ganti dengan server MySQL Anda
-            string database = "management_product"; // Ganti dengan nama database Anda
-            string username = "root"; // Ganti dengan username MySQL Anda
-            string password = ""; // Ganti dengan password MySQL Anda
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            string email = txtEmail.Text;
+            string phone = txtPhone.Text;
+            byte[] image = ConvertImageToByteArray(txtPic.Image);
 
-            string connectionString = $"Server={server};Database={database};Uid={username};Pwd={password};";
-
-            // Ambil nilai dari TextBox dan PictureBox
-            string usernameValue = txtUsername.Text;
-            string passwordValue = txtPassword.Text;
-            string emailValue = txtEmail.Text;
-            string phoneValue = txtPhone.Text;
-            byte[] imageValue = ConvertImageToByteArray(txtPic.Image); // Konversi gambar ke byte array jika perlu
-
-            // Cek apakah ada data yang kosong
-            if (string.IsNullOrEmpty(usernameValue) || string.IsNullOrEmpty(passwordValue) || string.IsNullOrEmpty(emailValue) || string.IsNullOrEmpty(phoneValue) || imageValue == null)
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phone))
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
+            bool success = users.InsertUser(username, password, email, phone, image);
 
-            // Simpan data ke dalam tabel users
-            try
+            if (success)
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string insertQuery = "INSERT INTO users (username, password, email, phone, image) VALUES (@username, @password, @email, @phone, @image)";
-                    MySqlCommand cmd = new MySqlCommand(insertQuery, connection);
-                    cmd.Parameters.AddWithValue("@username", usernameValue);
-                    cmd.Parameters.AddWithValue("@password", passwordValue);
-                    cmd.Parameters.AddWithValue("@email", emailValue);
-                    cmd.Parameters.AddWithValue("@phone", phoneValue);
-                    cmd.Parameters.AddWithValue("@image", imageValue);
-                    cmd.ExecuteNonQuery();
-                }
-
-                // Tampilkan pesan sukses jika data berhasil disimpan
-                MessageBox.Show("Data saved successfully.");
+                MessageBox.Show("User data has been successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (Owner is Form_crudUsers crudForm)
                 {
                     crudForm.LoadData();
                 }
 
+                this.Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error saving data: " + ex.Message);
+                MessageBox.Show("User data was not successfully added.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

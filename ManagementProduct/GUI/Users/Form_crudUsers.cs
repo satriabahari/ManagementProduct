@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
+using ManagementProduct.Class;
 using MySql.Data.MySqlClient;
 
 
@@ -14,37 +16,26 @@ namespace ManagementProduct.GUI
 {
     public partial class Form_crudUsers : Form
     {
-        private string connectionString = "server=localhost;user=root;password=;database=management_product;";
+        private Users users;
 
-        public Form_crudUsers()
+        public Form_crudUsers(bool isDarkModeEnabled)
         {
             InitializeComponent();
             LoadData();
+            users = new Users();
+            ApplyDarkMode(isDarkModeEnabled);
         }
 
         public void LoadData()
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    string query = "SELECT id, username, email, phone, password FROM users";
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+            Users users = new Users(); // Inisialisasi objek Users
+            DataTable dataTable = users.GetUsers(); // Ambil data pengguna dari database
 
-                    guna2DataGridView1.Rows.Clear();
-                    int i = 1;
-                    foreach (DataRow row in dataTable.Rows)
-                    {
-                        guna2DataGridView1.Rows.Add(i++, row["id"], row["username"], row["email"], row["phone"], row["password"]);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message);
-                }
+            guna2DataGridView1.Rows.Clear();
+            int i = 1;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                guna2DataGridView1.Rows.Add(i++, row["id"], row["username"], row["email"], row["phone"], row["password"]);
             }
         }
 
@@ -75,31 +66,35 @@ namespace ManagementProduct.GUI
                     int userId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["dgvid"].Value);
                     if (MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        DeleteUser(userId);
-                        LoadData();
+                        if (users.DeleteUser(userId))
+                        {
+                            MessageBox.Show("User deleted successfully.");
+                            LoadData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("An error occurred while deleting the user.");
+                        }
                     }
                 }
             }
         }
 
-        private void DeleteUser(int userId)
+        public void ApplyDarkMode(bool isDarkMode)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            if (isDarkMode)
             {
-                try
-                {
-                    conn.Open();
-                    string query = "DELETE FROM users WHERE id = @id";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@id", userId);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("User deleted successfully.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while deleting the user: " + ex.Message);
-                }
+                // Terapkan warna-warna untuk mode gelap
+                this.BackColor = Color.FromArgb(45, 45, 48); // Warna latar belakang gelap
+                this.ForeColor = Color.White; // Warna teks putih
+            }
+            else
+            {
+                // Terapkan warna-warna untuk mode normal
+                this.BackColor = SystemColors.Control; // Warna latar belakang default
+                this.ForeColor = SystemColors.ControlText; // Warna teks default
             }
         }
+
     }
 }

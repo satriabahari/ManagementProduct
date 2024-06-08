@@ -185,6 +185,17 @@ namespace ManagementProduct.GUI
             guna2vSeparator1.Name = "guna2vSeparator1";
             guna2vSeparator1.Size = new Size(10, 350);
             guna2vSeparator1.TabIndex = 6;
+
+            linkRegister = new Label();
+            linkRegister.AutoSize = true;
+            linkRegister.Font = new Font("Segoe UI", 9.75F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            linkRegister.ForeColor = Color.Blue;
+            linkRegister.Location = new Point(400, 400);
+            linkRegister.Name = "linkRegister";
+            linkRegister.Size = new Size(200, 20);
+            linkRegister.TabIndex = 6;
+            linkRegister.Text = "Don't have an account? Register here";
+            linkRegister.Click += new EventHandler(linkRegister_Click);
             // 
             // Form_Login
             // 
@@ -201,6 +212,7 @@ namespace ManagementProduct.GUI
             Controls.Add(txtUser);
             Controls.Add(label1);
             Controls.Add(guna2PictureBox1);
+            Controls.Add(linkRegister);
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(71, 69, 94);
             FormBorderStyle = FormBorderStyle.None;
@@ -224,5 +236,6 @@ namespace ManagementProduct.GUI
         private Guna.UI2.WinForms.Guna2TextBox txtPass;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2VSeparator guna2vSeparator1;
+        private Label linkRegister;
     }
 }

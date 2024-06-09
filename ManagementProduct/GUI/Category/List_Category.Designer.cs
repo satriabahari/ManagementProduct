@@ -43,8 +43,9 @@
             label1 = new Label();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
+            dgvNo = new DataGridViewTextBoxColumn();
+            dgvId = new DataGridViewTextBoxColumn();
+            dgvName = new DataGridViewTextBoxColumn();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             SuspendLayout();
@@ -153,7 +154,7 @@
             guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             guna2DataGridView1.ColumnHeadersHeight = 50;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
+            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { dgvNo, dgvId, dgvName });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -192,18 +193,25 @@
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
-            // Column1
+            // dgvNo
             // 
-            Column1.FillWeight = 50F;
-            Column1.HeaderText = "No";
-            Column1.MinimumWidth = 8;
-            Column1.Name = "Column1";
+            dgvNo.FillWeight = 50F;
+            dgvNo.HeaderText = "No";
+            dgvNo.MinimumWidth = 8;
+            dgvNo.Name = "dgvNo";
             // 
-            // Column2
+            // dgvId
             // 
-            Column2.HeaderText = "Name";
-            Column2.MinimumWidth = 8;
-            Column2.Name = "Column2";
+            dgvId.HeaderText = "Id";
+            dgvId.MinimumWidth = 8;
+            dgvId.Name = "dgvId";
+            dgvId.Visible = false;
+            // 
+            // dgvName
+            // 
+            dgvName.HeaderText = "Name";
+            dgvName.MinimumWidth = 8;
+            dgvName.Name = "dgvName";
             // 
             // List_Category
             // 
@@ -224,12 +232,13 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
         public Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         public Guna.UI2.WinForms.Guna2Button guna2Button1;
         public Label label1;
         public Label label2;
         public Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private DataGridViewTextBoxColumn dgvNo;
+        private DataGridViewTextBoxColumn dgvId;
+        private DataGridViewTextBoxColumn dgvName;
     }
 }

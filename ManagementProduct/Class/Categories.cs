@@ -82,7 +82,7 @@ namespace ManagementProduct.Class
 
         public DataRow GetCategoryById(int categoryId)
         {
-            string query = "SELECT name FROM users WHERE id = @id";
+            string query = "SELECT name FROM categories WHERE id = @id";
 
             if (OpenConnection())
             {
@@ -133,7 +133,7 @@ namespace ManagementProduct.Class
             if (OpenConnection())
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@username", name);
+                cmd.Parameters.AddWithValue("@name", name);
 
                 int rowsAffected = cmd.ExecuteNonQuery();
 

@@ -18,6 +18,7 @@ namespace ManagementProduct.GUI.Category
         public Form_Add_Category()
         {
             InitializeComponent();
+            categories = new Categories();
         }
 
         private void buttonClose(object sender, EventArgs e)
@@ -38,9 +39,9 @@ namespace ManagementProduct.GUI.Category
 
             if (success)
             {
-                MessageBox.Show("User data has been successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Category data has been successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (Owner is List_User crudForm)
+                if (Owner is List_Category crudForm)
                 {
                     crudForm.LoadData();
                 }
@@ -49,7 +50,7 @@ namespace ManagementProduct.GUI.Category
             }
             else
             {
-                MessageBox.Show("User data was not successfully added.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Category data was not successfully added.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

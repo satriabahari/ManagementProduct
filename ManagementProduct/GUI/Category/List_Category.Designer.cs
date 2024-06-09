@@ -62,7 +62,6 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2Panel1.Size = new Size(1054, 205);
             guna2Panel1.TabIndex = 0;
-            guna2Panel1.Paint += guna2Panel1_Paint;
             // 
             // guna2TextBox1
             // 
@@ -101,7 +100,6 @@
             label2.Size = new Size(100, 38);
             label2.TabIndex = 1;
             label2.Text = "Search";
-            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -113,7 +111,6 @@
             label1.Size = new Size(128, 38);
             label1.TabIndex = 0;
             label1.Text = "Category";
-            label1.Click += label1_Click;
             // 
             // guna2Button1
             // 
@@ -135,7 +132,7 @@
             guna2Button1.Size = new Size(206, 68);
             guna2Button1.TabIndex = 0;
             guna2Button1.Text = "Add Category";
-            guna2Button1.Click += guna2Button1_Click;
+            guna2Button1.Click += buttonAdd;
             // 
             // guna2DataGridView1
             // 

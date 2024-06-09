@@ -62,7 +62,7 @@ namespace ManagementProduct.GUI
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             // Membuat instance dari Form_CRUDCategory
-            List_Category crudCategoryForm = new List_Category();
+            List_Category crudCategoryForm = new List_Category(darkModeEnabled);
 
             // Mengatur properti TopLevel dan BorderStyle
             crudCategoryForm.TopLevel = false;

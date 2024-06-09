@@ -1,4 +1,5 @@
 ﻿using ManagementProduct.Class;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +16,25 @@ namespace ManagementProduct.GUI.Category
     {
         private Categories categories;
 
-        public List_Category()
+        public List_Category(bool isDarkModeEnabled)
         {
             InitializeComponent();
+            LoadData();
+            categories = new Categories();
+            buttonDarkMode(isDarkModeEnabled);
         }
 
         internal void LoadData()
         {
-            throw new NotImplementedException();
+            Categories categories = new Categories(); // Inisialisasi objek Users
+            DataTable dataTable = categories.GetCategories(); // Ambil data pengguna dari database
+
+            guna2DataGridView1.Rows.Clear();
+            int i = 1;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                guna2DataGridView1.Rows.Add(i++, row["id"], row["name"]);
+            }
         }
 
         private void buttonAdd(object sender, EventArgs e)
@@ -59,18 +71,18 @@ namespace ManagementProduct.GUI.Category
                 {
                     int categoryId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["dgvid"].Value);
                     Form_Edit_Category formEditCategory = new Form_Edit_Category(categoryId);
-                    formEditCategory.UserUpdated += (s, ev) => LoadData();
+                    formEditCategory.CategoryUpdated += (s, ev) => LoadData();
                     formEditCategory.ShowDialog();
                 }
                 // Jika kolom delete yang diklik
                 else if (e.ColumnIndex == guna2DataGridView1.Columns["dgvDel"].Index)
                 {
                     int userId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["dgvid"].Value);
-                    if (MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
                         if (categories.DeleteCategory(userId))
                         {
-                            MessageBox.Show("User deleted successfully.");
+                            MessageBox.Show("Category deleted successfully.");
                             LoadData();
                         }
                         else

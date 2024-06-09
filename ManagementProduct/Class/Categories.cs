@@ -19,9 +19,9 @@ namespace ManagementProduct.Class
 
         private void InitializeDB()
         {
-            server = "localhost"; 
+            server = "localhost";
             database = "management_product";
-            uid = "root"; 
+            uid = "root";
             password = "";
             string connectionString = $"SERVER={server};DATABASE={database};UID={uid};PASSWORD={password};";
 
@@ -80,6 +80,52 @@ namespace ManagementProduct.Class
             return dataTable;
         }
 
+        public DataRow GetCategoryById(int categoryId)
+        {
+            string query = "SELECT name FROM users WHERE id = @id";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", categoryId);
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    CloseConnection();
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt.Rows[0];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public DataRow GetCategoryByName(string name)
+        {
+            string query = "SELECT * FROM categories WHERE name = @name";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@name", name);
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    CloseConnection();
+                    if (dt.Rows.Count > 0)
+                    {
+                        return dt.Rows[0];
+                    }
+                }
+            }
+            return null;
+        }
+
         public bool CreateCategory(string name)
         {
             string query = "INSERT INTO categories (name) VALUES (@name)";
@@ -99,5 +145,58 @@ namespace ManagementProduct.Class
             return false;
         }
 
+        public bool UpdateCategory(int categoryId, string name)
+        {
+            string query = "UPDATE categories SET name = @name WHERE id = @id";
+
+            if (OpenConnection())
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@username", name);
+                    cmd.Parameters.AddWithValue("@id", categoryId);
+                    cmd.ExecuteNonQuery();
+                    CloseConnection();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                    CloseConnection();
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public bool DeleteCategory(int categoryId)
+        {
+            string query = "DELETE FROM categories WHERE id = @id";
+
+            if (OpenConnection())
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id", categoryId);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    CloseConnection();
+
+                    // Jika ada baris yang terpengaruh, penghapusan berhasil
+                    return rowsAffected > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                    CloseConnection();
+                    return false;
+                }
+            }
+
+            return false;
+
+
+        }
     }
 }

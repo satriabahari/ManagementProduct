@@ -126,7 +126,7 @@ namespace ManagementProduct.GUI
             guna2Button2.Size = new Size(154, 68);
             guna2Button2.TabIndex = 0;
             guna2Button2.Text = "Close";
-            guna2Button2.Click += guna2Button2_Click;
+            guna2Button2.Click += buttonClose;
             // 
             // guna2Button1
             // 
@@ -148,7 +148,7 @@ namespace ManagementProduct.GUI
             guna2Button1.Size = new Size(154, 68);
             guna2Button1.TabIndex = 0;
             guna2Button1.Text = "Save";
-            guna2Button1.Click += guna2Button1_Click;
+            guna2Button1.Click += buttonUpdate;
             // 
             // label2
             // 
@@ -313,7 +313,7 @@ namespace ManagementProduct.GUI
             btnBrowse.Size = new Size(133, 68);
             btnBrowse.TabIndex = 4;
             btnBrowse.Text = "Browse";
-            btnBrowse.Click += btnBrowse_Click;
+            btnBrowse.Click += buttonBrowseImage;
             // 
             // Form_editUsers
             // 

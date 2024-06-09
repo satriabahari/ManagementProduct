@@ -106,52 +106,7 @@ namespace ManagementProduct.Class
             return usernames;
         }
 
-        public DataTable GetUsers()
-        {
-            DataTable dataTable = new DataTable();
-
-            string query = "SELECT id, username, email, phone, password FROM users";
-
-            if (OpenConnection())
-            {
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                adapter.Fill(dataTable);
-
-                CloseConnection();
-            }
-
-            return dataTable;
-        }
-
-        public bool DeleteUser(int userId)
-        {
-            string query = "DELETE FROM users WHERE id = @id";
-
-            if (OpenConnection())
-            {
-                try
-                {
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@id", userId);
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    CloseConnection();
-
-                    // Jika ada baris yang terpengaruh, penghapusan berhasil
-                    return rowsAffected > 0;
-                }
-                catch (MySqlException ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                    CloseConnection();
-                    return false;
-                }
-            }
-
-            return false;
-        }
-
-        public bool InsertUser(string username, string password, string email, string phone, byte[] image)
+        public bool CreateUser(string username, string password, string email, string phone, byte[] image)
         {
             string query = "INSERT INTO users (username, password, email, phone, image) VALUES (@username, @password, @email, @phone, @image)";
 
@@ -174,34 +129,22 @@ namespace ManagementProduct.Class
             return false;
         }
 
-        // Tambahkan ini ke kelas Users
-        public bool UpdateUser(int userId, string username, string password, string email, string phone, byte[] image)
+        public DataTable GetUsers()
         {
-            string query = "UPDATE users SET username = @username, password = @password, email = @email, phone = @phone, image = @image WHERE id = @id";
+            DataTable dataTable = new DataTable();
+
+            string query = "SELECT id, username, email, phone, password FROM users";
 
             if (OpenConnection())
             {
-                try
-                {
-                    MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@phone", phone);
-                    cmd.Parameters.AddWithValue("@image", image);
-                    cmd.Parameters.AddWithValue("@id", userId);
-                    cmd.ExecuteNonQuery();
-                    CloseConnection();
-                    return true;
-                }
-                catch (MySqlException ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                    CloseConnection();
-                    return false;
-                }
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                adapter.Fill(dataTable);
+
+                CloseConnection();
             }
-            return false;
+
+            return dataTable;
         }
 
         public DataRow GetUserById(int userId)
@@ -249,6 +192,60 @@ namespace ManagementProduct.Class
             }
             return null;
         }
+        public bool UpdateUser(int userId, string username, string password, string email, string phone, byte[] image)
+        {
+            string query = "UPDATE users SET username = @username, password = @password, email = @email, phone = @phone, image = @image WHERE id = @id";
 
+            if (OpenConnection())
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@phone", phone);
+                    cmd.Parameters.AddWithValue("@image", image);
+                    cmd.Parameters.AddWithValue("@id", userId);
+                    cmd.ExecuteNonQuery();
+                    CloseConnection();
+                    return true;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                    CloseConnection();
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        public bool DeleteUser(int userId)
+        {
+            string query = "DELETE FROM users WHERE id = @id";
+
+            if (OpenConnection())
+            {
+                try
+                {
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id", userId);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    CloseConnection();
+
+                    // Jika ada baris yang terpengaruh, penghapusan berhasil
+                    return rowsAffected > 0;
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                    CloseConnection();
+                    return false;
+                }
+            }
+
+            return false;
+        }
     }
 }

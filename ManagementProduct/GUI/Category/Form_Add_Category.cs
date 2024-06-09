@@ -1,4 +1,5 @@
 ﻿using ManagementProduct.Class;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,19 +20,14 @@ namespace ManagementProduct.GUI.Category
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void buttonClose(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void buttonAdd(object sender, EventArgs e)
         {
-            string name = txtName.Text;
+            string name = inputName.Text;
 
             if (string.IsNullOrEmpty(name))
             {
@@ -42,9 +38,9 @@ namespace ManagementProduct.GUI.Category
 
             if (success)
             {
-                MessageBox.Show("Category data has been successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User data has been successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (Owner is List_Category crudForm)
+                if (Owner is List_User crudForm)
                 {
                     crudForm.LoadData();
                 }
@@ -53,7 +49,7 @@ namespace ManagementProduct.GUI.Category
             }
             else
             {
-                MessageBox.Show("Category data was not successfully added.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("User data was not successfully added.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

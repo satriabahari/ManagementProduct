@@ -27,7 +27,7 @@ namespace ManagementProduct.GUI
             LoadUserData();
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void buttonClose(object sender, EventArgs e)
         {
             Close();
         }
@@ -56,7 +56,7 @@ namespace ManagementProduct.GUI
             }
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void buttonUpdate(object sender, EventArgs e)
         {
             string usernameValue = txtUsername.Text;
             string passwordValue = txtPassword.Text;
@@ -83,7 +83,7 @@ namespace ManagementProduct.GUI
             }
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void buttonBrowseImage(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {

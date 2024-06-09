@@ -65,7 +65,7 @@ namespace ManagementProduct.GUI
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
-            bool success = users.InsertUser(username, password, email, phone, image);
+            bool success = users.CreateUser(username, password, email, phone, image);
 
             if (success)
             {

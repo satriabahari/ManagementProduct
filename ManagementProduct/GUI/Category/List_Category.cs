@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManagementProduct.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace ManagementProduct.GUI.Category
 {
     public partial class List_Category : Form
     {
+        private Categories categories;
+
         public List_Category()
         {
             InitializeComponent();
@@ -22,28 +25,61 @@ namespace ManagementProduct.GUI.Category
             throw new NotImplementedException();
         }
 
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void buttonAdd(object sender, EventArgs e)
         {
             Form_Add_Category formAddCategory = new Form_Add_Category
             {
                 Owner = this
             };
             formAddCategory.ShowDialog();
+        }
+
+        public void buttonDarkMode(bool isDarkMode)
+        {
+            if (isDarkMode)
+            {
+                // Terapkan warna-warna untuk mode gelap
+                this.BackColor = Color.FromArgb(45, 45, 48); // Warna latar belakang gelap
+                this.ForeColor = Color.White; // Warna teks putih
+            }
+            else
+            {
+                // Terapkan warna-warna untuk mode normal
+                this.BackColor = SystemColors.Control; // Warna latar belakang default
+                this.ForeColor = SystemColors.ControlText; // Warna teks default
+            }
+        }
+
+        private void buttonActions(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Jika kolom edit yang diklik
+                if (e.ColumnIndex == guna2DataGridView1.Columns["dgvEdit"].Index)
+                {
+                    int categoryId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["dgvid"].Value);
+                    Form_Edit_Category formEditCategory = new Form_Edit_Category(categoryId);
+                    formEditCategory.UserUpdated += (s, ev) => LoadData();
+                    formEditCategory.ShowDialog();
+                }
+                // Jika kolom delete yang diklik
+                else if (e.ColumnIndex == guna2DataGridView1.Columns["dgvDel"].Index)
+                {
+                    int userId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["dgvid"].Value);
+                    if (MessageBox.Show("Are you sure you want to delete this user?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        if (categories.DeleteCategory(userId))
+                        {
+                            MessageBox.Show("User deleted successfully.");
+                            LoadData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("An error occurred while deleting the user.");
+                        }
+                    }
+                }
+            }
         }
     }
 }

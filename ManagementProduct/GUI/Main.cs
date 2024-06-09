@@ -1,4 +1,5 @@
 ﻿using ManagementProduct.Class;
+using ManagementProduct.GUI.Category;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,7 +62,7 @@ namespace ManagementProduct.GUI
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             // Membuat instance dari Form_CRUDCategory
-            Form_crudCategory crudCategoryForm = new Form_crudCategory();
+            List_Category crudCategoryForm = new List_Category();
 
             // Mengatur properti TopLevel dan BorderStyle
             crudCategoryForm.TopLevel = false;
@@ -79,7 +80,7 @@ namespace ManagementProduct.GUI
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             // Membuat instance dari Form_CRUDCategory
-            Form_crudUsers crudUsersForm = new Form_crudUsers(darkModeEnabled);
+            List_User crudUsersForm = new List_User(darkModeEnabled);
 
             
 
@@ -152,9 +153,9 @@ namespace ManagementProduct.GUI
             }
 
             // Perbarui Form_crudUsers jika sedang ditampilkan
-            if (guna2Panel2.Controls.Count > 0 && guna2Panel2.Controls[0] is Form_crudUsers)
+            if (guna2Panel2.Controls.Count > 0 && guna2Panel2.Controls[0] is List_User)
             {
-                ((Form_crudUsers)guna2Panel2.Controls[0]).ApplyDarkMode(darkModeEnabled);
+                ((List_User)guna2Panel2.Controls[0]).buttonDarkMode(darkModeEnabled);
             }
         }
 

@@ -12,14 +12,14 @@ using ManagementProduct.Class;
 
 namespace ManagementProduct.GUI
 {
-    public partial class Form_editUsers : Form
+    public partial class Form_Edit_User : Form
     {
         private int userId;
         private Users users;
 
         public event EventHandler UserUpdated;
 
-        public Form_editUsers(int userId)
+        public Form_Edit_User(int userId)
         {
             InitializeComponent();
             this.userId = userId;

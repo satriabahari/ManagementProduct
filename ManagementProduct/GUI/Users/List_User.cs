@@ -14,16 +14,16 @@ using MySql.Data.MySqlClient;
 
 namespace ManagementProduct.GUI
 {
-    public partial class Form_crudUsers : Form
+    public partial class List_User : Form
     {
         private Users users;
 
-        public Form_crudUsers(bool isDarkModeEnabled)
+        public List_User(bool isDarkModeEnabled)
         {
             InitializeComponent();
             LoadData();
             users = new Users();
-            ApplyDarkMode(isDarkModeEnabled);
+            buttonDarkMode(isDarkModeEnabled);
         }
 
         public void LoadData()
@@ -39,16 +39,32 @@ namespace ManagementProduct.GUI
             }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void buttonAdd(object sender, EventArgs e)
         {
-            Form_addUsers formAddUsers = new Form_addUsers
+            Form_Add_User formAddUsers = new Form_Add_User
             {
                 Owner = this
             };
             formAddUsers.ShowDialog();
         }
 
-        private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        public void buttonDarkMode(bool isDarkMode)
+        {
+            if (isDarkMode)
+            {
+                // Terapkan warna-warna untuk mode gelap
+                this.BackColor = Color.FromArgb(45, 45, 48); // Warna latar belakang gelap
+                this.ForeColor = Color.White; // Warna teks putih
+            }
+            else
+            {
+                // Terapkan warna-warna untuk mode normal
+                this.BackColor = SystemColors.Control; // Warna latar belakang default
+                this.ForeColor = SystemColors.ControlText; // Warna teks default
+            }
+        }
+
+        private void buttonActions(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -56,7 +72,7 @@ namespace ManagementProduct.GUI
                 if (e.ColumnIndex == guna2DataGridView1.Columns["dgvEdit"].Index)
                 {
                     int userId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["dgvid"].Value);
-                    Form_editUsers formEditUsers = new Form_editUsers(userId);
+                    Form_Edit_User formEditUsers = new Form_Edit_User(userId);
                     formEditUsers.UserUpdated += (s, ev) => LoadData();
                     formEditUsers.ShowDialog();
                 }
@@ -79,22 +95,5 @@ namespace ManagementProduct.GUI
                 }
             }
         }
-
-        public void ApplyDarkMode(bool isDarkMode)
-        {
-            if (isDarkMode)
-            {
-                // Terapkan warna-warna untuk mode gelap
-                this.BackColor = Color.FromArgb(45, 45, 48); // Warna latar belakang gelap
-                this.ForeColor = Color.White; // Warna teks putih
-            }
-            else
-            {
-                // Terapkan warna-warna untuk mode normal
-                this.BackColor = SystemColors.Control; // Warna latar belakang default
-                this.ForeColor = SystemColors.ControlText; // Warna teks default
-            }
-        }
-
     }
 }

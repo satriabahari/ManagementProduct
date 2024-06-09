@@ -1,6 +1,6 @@
 ﻿namespace ManagementProduct.GUI
 {
-    partial class Form_crudUsers
+    partial class List_User
     {
         /// <summary>
         /// Required designer variable.
@@ -57,23 +57,23 @@
             // 
             // guna2Panel1
             // 
+            guna2Panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             guna2Panel1.Controls.Add(txtSearch);
             guna2Panel1.Controls.Add(btnAdd);
             guna2Panel1.Controls.Add(label2);
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.CustomizableEdges = customizableEdges5;
-            guna2Panel1.Dock = DockStyle.Top;
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2Panel1.Size = new Size(1071, 180);
+            guna2Panel1.Size = new Size(1060, 150);
             guna2Panel1.TabIndex = 0;
             // 
             // txtSearch
             // 
             txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtSearch.AutoRoundedCorners = true;
-            txtSearch.BorderRadius = 24;
+            txtSearch.BorderRadius = 33;
             txtSearch.CustomizableEdges = customizableEdges1;
             txtSearch.DefaultText = "";
             txtSearch.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -84,15 +84,16 @@
             txtSearch.Font = new Font("Segoe UI", 9F);
             txtSearch.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             txtSearch.IconLeft = Properties.Resources.search;
+            txtSearch.IconLeftOffset = new Point(20, 0);
             txtSearch.IconLeftSize = new Size(30, 30);
-            txtSearch.Location = new Point(662, 79);
+            txtSearch.Location = new Point(570, 79);
             txtSearch.Margin = new Padding(4, 5, 4, 5);
             txtSearch.Name = "txtSearch";
             txtSearch.PasswordChar = '\0';
             txtSearch.PlaceholderText = "Search Here";
             txtSearch.SelectedText = "";
             txtSearch.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            txtSearch.Size = new Size(370, 50);
+            txtSearch.Size = new Size(395, 68);
             txtSearch.TabIndex = 3;
             txtSearch.TextOffset = new Point(5, 0);
             // 
@@ -117,13 +118,13 @@
             btnAdd.Size = new Size(206, 68);
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add New";
-            btnAdd.Click += btnAdd_Click;
+            btnAdd.Click += buttonAdd;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(662, 29);
+            label2.Location = new Point(570, 29);
             label2.Name = "label2";
             label2.Size = new Size(70, 28);
             label2.TabIndex = 1;
@@ -133,7 +134,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(57, 19);
+            label1.Location = new Point(57, 21);
             label1.Name = "label1";
             label1.Size = new Size(206, 38);
             label1.TabIndex = 0;
@@ -176,7 +177,7 @@
             guna2DataGridView1.RowHeadersVisible = false;
             guna2DataGridView1.RowHeadersWidth = 62;
             guna2DataGridView1.RowTemplate.Height = 50;
-            guna2DataGridView1.Size = new Size(975, 423);
+            guna2DataGridView1.Size = new Size(964, 470);
             guna2DataGridView1.TabIndex = 1;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -199,7 +200,7 @@
             guna2DataGridView1.ThemeStyle.RowsStyle.Height = 50;
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.CellClick += guna2DataGridView1_CellClick;
+            guna2DataGridView1.CellClick += buttonActions;
             // 
             // dgvNo
             // 
@@ -274,7 +275,7 @@
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.FromArgb(239, 243, 248);
-            ClientSize = new Size(1071, 654);
+            ClientSize = new Size(1060, 701);
             Controls.Add(guna2DataGridView1);
             Controls.Add(guna2Panel1);
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -283,6 +284,7 @@
             Name = "Form_crudUsers";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form_crudUsers";
+           // Load += Form_crudUsers_Load;
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();

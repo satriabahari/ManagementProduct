@@ -12,21 +12,21 @@ using ManagementProduct.Class;
 
 namespace ManagementProduct.GUI
 {
-    public partial class Form_addUsers : Form
+    public partial class Form_Add_User : Form
     {
         private Users users;
-        public Form_addUsers()
+        public Form_Add_User()
         {
             InitializeComponent();
             users = new Users();
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void buttonClose(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void buttonBrowseImage(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -42,7 +42,7 @@ namespace ManagementProduct.GUI
                         string selectedImagePath = openFileDialog.FileName;
 
                         // Menampilkan gambar yang dipilih pada PictureBox
-                        txtPic.Image = Image.FromFile(selectedImagePath);
+                        inputPicture.Image = Image.FromFile(selectedImagePath);
                     }
                     catch (Exception ex)
                     {
@@ -52,14 +52,13 @@ namespace ManagementProduct.GUI
             }
         }
 
-
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void buttonAdd(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
-            string email = txtEmail.Text;
-            string phone = txtPhone.Text;
-            byte[] image = ConvertImageToByteArray(txtPic.Image);
+            string username = inputUsername.Text;
+            string password = inputPassword.Text;
+            string email = inputEmail.Text;
+            string phone = inputPhone.Text;
+            byte[] image = ConvertImageToByteArray(inputPicture.Image);
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phone))
             {
@@ -72,7 +71,7 @@ namespace ManagementProduct.GUI
             {
                 MessageBox.Show("User data has been successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (Owner is Form_crudUsers crudForm)
+                if (Owner is List_User crudForm)
                 {
                     crudForm.LoadData();
                 }

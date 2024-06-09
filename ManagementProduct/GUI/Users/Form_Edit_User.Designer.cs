@@ -1,6 +1,8 @@
-﻿namespace ManagementProduct.GUI
+﻿using Guna.UI2.WinForms;
+
+namespace ManagementProduct.GUI
 {
-    partial class Form_addUsers
+    partial class Form_Edit_User
     {
         /// <summary>
         /// Required designer variable.
@@ -47,21 +49,21 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Panel1 = new Guna2Panel();
             label1 = new Label();
-            guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            guna2Panel2 = new Guna2Panel();
+            guna2Button2 = new Guna2Button();
+            guna2Button1 = new Guna2Button();
             label2 = new Label();
-            txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
-            txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
+            txtUsername = new Guna2TextBox();
+            txtPassword = new Guna2TextBox();
             label3 = new Label();
-            txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
+            txtEmail = new Guna2TextBox();
             label4 = new Label();
-            txtPhone = new Guna.UI2.WinForms.Guna2TextBox();
+            txtPhone = new Guna2TextBox();
             label5 = new Label();
-            txtPic = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            btnBrowse = new Guna.UI2.WinForms.Guna2Button();
+            txtPic = new Guna2CirclePictureBox();
+            btnBrowse = new Guna2Button();
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtPic).BeginInit();
@@ -313,7 +315,7 @@
             btnBrowse.Text = "Browse";
             btnBrowse.Click += btnBrowse_Click;
             // 
-            // Form_addUsers
+            // Form_editUsers
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
@@ -334,7 +336,7 @@
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(71, 69, 94);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form_addUsers";
+            Name = "Form_editUsers";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form_addUsers";
             guna2Panel1.ResumeLayout(false);

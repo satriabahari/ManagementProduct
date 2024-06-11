@@ -1,5 +1,7 @@
 ﻿using ManagementProduct.Class;
 using ManagementProduct.GUI.Category;
+using ManagementProduct.GUI.Customer;
+using ManagementProduct.GUI.Supplier;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -82,7 +84,7 @@ namespace ManagementProduct.GUI
             // Membuat instance dari Form_CRUDCategory
             List_User crudUsersForm = new List_User(darkModeEnabled);
 
-            
+
 
             // Mengatur properti TopLevel dan BorderStyle
             crudUsersForm.TopLevel = false;
@@ -176,6 +178,46 @@ namespace ManagementProduct.GUI
         private void btnDarkMode_Click(object sender, EventArgs e)
         {
             ToggleDarkMode(); // Panggil fungsi untuk mengubah mode
+        }
+
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+            // Membuat instance dari Form_CRUDCategory
+            List_Customer crudCustomersForm = new List_Customer(darkModeEnabled);
+
+
+
+            // Mengatur properti TopLevel dan BorderStyle
+            crudCustomersForm.TopLevel = false;
+            crudCustomersForm.FormBorderStyle = FormBorderStyle.None;
+            crudCustomersForm.Dock = DockStyle.Fill;
+            guna2Panel2.Controls.Clear();
+
+            // Tetapkan parent ke guna2Panel2
+            guna2Panel2.Controls.Add(crudCustomersForm);
+
+            // Tampilkan Form_CRUDCategory
+            crudCustomersForm.Show();
+        }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            // Membuat instance dari Form_CRUDCategory
+            List_Supplier crudSuppliersForm = new List_Supplier(darkModeEnabled);
+
+
+
+            // Mengatur properti TopLevel dan BorderStyle
+            crudSuppliersForm.TopLevel = false;
+            crudSuppliersForm.FormBorderStyle = FormBorderStyle.None;
+            crudSuppliersForm.Dock = DockStyle.Fill;
+            guna2Panel2.Controls.Clear();
+
+            // Tetapkan parent ke guna2Panel2
+            guna2Panel2.Controls.Add(crudSuppliersForm);
+
+            // Tampilkan Form_CRUDCategory
+            crudSuppliersForm.Show();
         }
     }
 }

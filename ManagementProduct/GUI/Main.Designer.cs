@@ -301,6 +301,7 @@
             guna2Button6.Text = "Outbound";
             guna2Button6.TextAlign = HorizontalAlignment.Left;
             guna2Button6.TextOffset = new Point(30, 0);
+            guna2Button6.Click += guna2Button6_Click;
             // 
             // guna2Button5
             // 
@@ -327,6 +328,7 @@
             guna2Button5.Text = "Inbound";
             guna2Button5.TextAlign = HorizontalAlignment.Left;
             guna2Button5.TextOffset = new Point(30, 0);
+            guna2Button5.Click += guna2Button5_Click;
             // 
             // guna2Button4
             // 

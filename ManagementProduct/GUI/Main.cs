@@ -2,6 +2,8 @@
 using ManagementProduct.GUI.Category;
 using ManagementProduct.GUI.Customer;
 using ManagementProduct.GUI.Supplier;
+using ManagementProduct.GUI.Inbound;
+using ManagementProduct.GUI.Outbound;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -178,6 +180,58 @@ namespace ManagementProduct.GUI
         private void btnDarkMode_Click(object sender, EventArgs e)
         {
             ToggleDarkMode(); // Panggil fungsi untuk mengubah mode
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            // Membuat instance dari Form_CRUDCategory
+            //List_Product crudProductForm = new List_Product(darkModeEnabled);
+
+            // Mengatur properti TopLevel dan BorderStyle
+            //crudProductForm.TopLevel = false;
+            //crudProductForm.FormBorderStyle = FormBorderStyle.None;
+            //crudProductForm.Dock = DockStyle.Fill;
+            //guna2Panel2.Controls.Clear();
+
+            // Tetapkan parent ke guna2Panel2
+            //guna2Panel2.Controls.Add(crudProductForm);
+
+            // Tampilkan Form_CRUDCategory
+            // crudProductForm.Show();
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            List_Inbound crudInboundForm = new List_Inbound(darkModeEnabled);
+
+            // Mengatur properti TopLevel dan BorderStyle
+            crudInboundForm.TopLevel = false;
+            crudInboundForm.FormBorderStyle = FormBorderStyle.None;
+            crudInboundForm.Dock = DockStyle.Fill;
+            guna2Panel2.Controls.Clear();
+
+            // Tetapkan parent ke guna2Panel2
+            guna2Panel2.Controls.Add(crudInboundForm);
+
+            // Tampilkan Form_CRUDCategory
+            crudInboundForm.Show();
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            List_Outbound crudOutboundForm = new List_Outbound(darkModeEnabled);
+
+            // Mengatur properti TopLevel dan BorderStyle
+            crudOutboundForm.TopLevel = false;
+            crudOutboundForm.FormBorderStyle = FormBorderStyle.None;
+            crudOutboundForm.Dock = DockStyle.Fill;
+            guna2Panel2.Controls.Clear();
+
+            // Tetapkan parent ke guna2Panel2
+            guna2Panel2.Controls.Add(crudOutboundForm);
+
+            // Tampilkan Form_CRUDCategory
+            crudOutboundForm.Show();
         }
 
         private void guna2Button8_Click(object sender, EventArgs e)

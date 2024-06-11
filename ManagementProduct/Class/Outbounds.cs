@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ManagementProduct.Class
 {
-    internal class Inbounds
+    internal class Outbounds
     {
         private MySqlConnection connection;
         private string server;
@@ -16,7 +16,7 @@ namespace ManagementProduct.Class
         private string uid;
         private string password;
 
-        public Inbounds()
+        public Outbounds()
         {
             InitializeDB();
         }
@@ -62,15 +62,15 @@ namespace ManagementProduct.Class
             }
         }
 
-        public bool CreateInbound(string product_id, string supplier_id, string quantity, string date)
+        public bool CreateOutbound(string product_id, string customer_id, string quantity, string date)
         {
-            string query = "INSERT INTO inbounds (product_id, supplier_id, quantity, date) VALUES (@product_id, @supplier_id, @quantity, @date)";
+            string query = "INSERT INTO outbounds (product_id, customer_id, quantity, date) VALUES (@product_id, @customer_id, @quantity, @date)";
 
             if (OpenConnection())
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@product_id", product_id);
-                cmd.Parameters.AddWithValue("@supplier_id", supplier_id);
+                cmd.Parameters.AddWithValue("@customer_id", customer_id);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
                 cmd.Parameters.AddWithValue("@date", date);
 
@@ -85,11 +85,11 @@ namespace ManagementProduct.Class
         }
 
 
-        public DataTable GetInbounds()
+        public DataTable GetOutbounds()
         {
             DataTable dataTable = new DataTable();
 
-            string query = "SELECT id, product_id, supplier_id, quantity, date FROM inbounds";
+            string query = "SELECT id, product_id, customer_id, quantity, date FROM outbounds";
 
             if (OpenConnection())
             {
@@ -104,14 +104,14 @@ namespace ManagementProduct.Class
             return dataTable;
         }
 
-        public DataRow GetInboundById(int inboundId)
+        public DataRow GetOutboundById(int outboundId)
         {
-            string query = "SELECT product_id, supplier_id, quantity, date FROM inbounds WHERE id = @id";
+            string query = "SELECT product_id, supplier_id, quantity, date FROM outbounds WHERE id = @id";
 
             if (OpenConnection())
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@id", inboundId);
+                cmd.Parameters.AddWithValue("@id", outboundId);
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                 {
@@ -127,9 +127,9 @@ namespace ManagementProduct.Class
             return null;
         }
 
-        public bool UpdateInbound(int inboundId, string product_id, string supplier_id, string quantity, string date)
+        public bool UpdateOutbound(int outboundId, string product_id, string customer_id, string quantity, string date)
         {
-            string query = "UPDATE inbounds SET product_id = @product_id, supplier_id = @supplier_id, quantity = @quantity, date = @date WHERE id = @id";
+            string query = "UPDATE outbounds SET product_id = @product_id, customer_id = @customer_id, quantity = @quantity, date = @date WHERE id = @id";
 
             if (OpenConnection())
             {
@@ -137,10 +137,10 @@ namespace ManagementProduct.Class
                 {
                     MySqlCommand cmd = new MySqlCommand(query, connection);
                     cmd.Parameters.AddWithValue("@product_id", product_id);
-                    cmd.Parameters.AddWithValue("@supplier_id", supplier_id);
+                    cmd.Parameters.AddWithValue("@customer_id", customer_id);
                     cmd.Parameters.AddWithValue("@quantity", quantity);
                     cmd.Parameters.AddWithValue("@date", date);
-                    cmd.Parameters.AddWithValue("@id", inboundId);
+                    cmd.Parameters.AddWithValue("@id", outboundId);
                     cmd.ExecuteNonQuery();
                     CloseConnection();
                     return true;
@@ -155,16 +155,16 @@ namespace ManagementProduct.Class
             return false;
         }
 
-        public bool DeleteInbound(int inboundId)
+        public bool DeleteOutbound(int outboundId)
         {
-            string query = "DELETE FROM inbounds WHERE id = @id";
+            string query = "DELETE FROM outbounds WHERE id = @id";
 
             if (OpenConnection())
             {
                 try
                 {
                     MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@id", inboundId);
+                    cmd.Parameters.AddWithValue("@id", outboundId);
                     int rowsAffected = cmd.ExecuteNonQuery();
                     CloseConnection();
 
@@ -180,11 +180,6 @@ namespace ManagementProduct.Class
             }
 
             return false;
-        }
-
-        public static implicit operator Inbounds(Outbounds v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

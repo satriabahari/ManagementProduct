@@ -1,6 +1,8 @@
 ﻿using ManagementProduct.Class;
 using ManagementProduct.GUI.Category;
 using ManagementProduct.GUI.Inbound;
+using ManagementProduct.GUI.Outbound;
+
 //using ManagementProduct.GUI.Products;
 using System;
 using System.Collections.Generic;
@@ -213,6 +215,23 @@ namespace ManagementProduct.GUI
 
             // Tampilkan Form_CRUDCategory
             crudInboundForm.Show();
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            List_Outbound crudOutboundForm = new List_Outbound(darkModeEnabled);
+
+            // Mengatur properti TopLevel dan BorderStyle
+            crudOutboundForm.TopLevel = false;
+            crudOutboundForm.FormBorderStyle = FormBorderStyle.None;
+            crudOutboundForm.Dock = DockStyle.Fill;
+            guna2Panel2.Controls.Clear();
+
+            // Tetapkan parent ke guna2Panel2
+            guna2Panel2.Controls.Add(crudOutboundForm);
+
+            // Tampilkan Form_CRUDCategory
+            crudOutboundForm.Show();
         }
     }
 }

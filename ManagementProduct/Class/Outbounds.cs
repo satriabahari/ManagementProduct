@@ -84,12 +84,85 @@ namespace ManagementProduct.Class
             return false;
         }
 
+        public List<string> GetCustomers()
+        {
+            List<string> customers = new List<string>();
+
+            string query = "SELECT name FROM customer";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    customers.Add(dataReader["name"].ToString());
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return customers;
+        }
+
+        public int GetCustomerIdByName(string customerName)
+        {
+            int customerId = -1;
+
+            string query = "SELECT id FROM customer WHERE name = @name";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@name", customerName);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    customerId = Convert.ToInt32(dataReader["id"]);
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return customerId;
+        }
+
+        public string GetCustomerNameById(int customerId)
+        {
+            string customerName = "";
+
+            string query = "SELECT name FROM customer WHERE id = @id";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", customerId);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    customerName = dataReader["name"].ToString();
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return customerName;
+        }
+
 
         public DataTable GetOutbounds()
         {
             DataTable dataTable = new DataTable();
 
-            string query = "SELECT id, product_id, customer_id, quantity, date FROM outbounds";
+            string query = "SELECT i.id, i.product_id, s.name AS customer_name, i.quantity, i.date " +
+               "FROM outbounds i " +
+               "JOIN customer s ON i.customer_id = s.id";
 
             if (OpenConnection())
             {
@@ -106,7 +179,7 @@ namespace ManagementProduct.Class
 
         public DataRow GetOutboundById(int outboundId)
         {
-            string query = "SELECT product_id, supplier_id, quantity, date FROM outbounds WHERE id = @id";
+            string query = "SELECT product_id, customer_id, quantity, date FROM outbounds WHERE id = @id";
 
             if (OpenConnection())
             {

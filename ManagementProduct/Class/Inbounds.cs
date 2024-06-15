@@ -131,11 +131,38 @@ namespace ManagementProduct.Class
             return supplierId;
         }
 
+        public string GetSupplierNameById(int supplierId)
+        {
+            string supplierName = "";
+
+            string query = "SELECT name FROM supplier WHERE id = @id";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", supplierId);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    supplierName = dataReader["name"].ToString();
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return supplierName;
+        }
+
+
         public DataTable GetInbounds()
         {
             DataTable dataTable = new DataTable();
 
-            string query = "SELECT id, product_id, supplier_id, quantity, date FROM inbounds";
+            string query = "SELECT i.id, i.product_id, s.name AS supplier_name, i.quantity, i.date " +
+               "FROM inbounds i " +
+               "JOIN supplier s ON i.supplier_id = s.id";
 
             if (OpenConnection())
             {

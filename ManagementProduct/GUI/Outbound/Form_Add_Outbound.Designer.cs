@@ -1,4 +1,6 @@
-﻿namespace ManagementProduct.GUI.Outbound
+﻿using Guna.UI2.WinForms;
+
+namespace ManagementProduct.GUI.Outbound
 {
     partial class Form_Add_Outbound
     {
@@ -51,7 +53,7 @@
             buttonSave = new Guna.UI2.WinForms.Guna2Button();
             inputDate = new Guna.UI2.WinForms.Guna2TextBox();
             label5 = new Label();
-            inputCustomer = new Guna.UI2.WinForms.Guna2TextBox();
+            inputCustomer = new Guna2ComboBox();
             label3 = new Label();
             inputQuantity = new Guna.UI2.WinForms.Guna2TextBox();
             label4 = new Label();
@@ -179,24 +181,24 @@
             // 
             inputCustomer.AutoRoundedCorners = true;
             inputCustomer.BorderRadius = 28;
-            inputCustomer.CustomizableEdges = customizableEdges11;
-            inputCustomer.DefaultText = "";
+            inputCustomer.CustomizableEdges = customizableEdges13;
+            //inputSupplier.DefaultText = "";
             inputCustomer.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputCustomer.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             inputCustomer.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            inputCustomer.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            //inputSupplier.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             inputCustomer.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             inputCustomer.Font = new Font("Segoe UI", 9F);
             inputCustomer.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             inputCustomer.Location = new Point(416, 203);
             inputCustomer.Margin = new Padding(4, 5, 4, 5);
-            inputCustomer.Name = "inputCustomer";
-            inputCustomer.PasswordChar = '\0';
-            inputCustomer.PlaceholderText = "";
+            inputCustomer.Name = "inputSupplier";
+            //inputSupplier.PasswordChar = '\0';
+            //inputSupplier.PlaceholderText = "";
             inputCustomer.SelectedText = "";
-            inputCustomer.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            inputCustomer.ShadowDecoration.CustomizableEdges = customizableEdges14;
             inputCustomer.Size = new Size(324, 59);
-            inputCustomer.TabIndex = 24;
+            inputCustomer.TabIndex = 16;
             inputCustomer.TextOffset = new Point(10, 0);
             // 
             // label3
@@ -308,7 +310,7 @@
         private Guna.UI2.WinForms.Guna2Button buttonSave;
         private Guna.UI2.WinForms.Guna2TextBox inputDate;
         private Label label5;
-        private Guna.UI2.WinForms.Guna2TextBox inputCustomer;
+        private Guna.UI2.WinForms.Guna2ComboBox inputCustomer;
         private Label label3;
         private Guna.UI2.WinForms.Guna2TextBox inputQuantity;
         private Label label4;

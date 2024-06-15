@@ -20,22 +20,23 @@ namespace ManagementProduct.GUI.Inbound
         public List_Inbound(bool isDarkModeEnabled)
         {
             InitializeComponent();
-            LoadData();
-            inbounds = new Inbounds();
+            inbounds = new Inbounds(); // Inisialisasi objek Inbounds
             buttonDarkMode(isDarkModeEnabled);
+            LoadData();
         }
 
-        internal void LoadData()
+        // Metode LoadData() yang diperbaiki
+        private void LoadData()
         {
-            Inbounds inbounds = new Inbounds(); // Inisialisasi objek Users
-            DataTable dataTable = inbounds.GetInbounds(); // Ambil data pengguna dari database
+            DataTable dataTable = inbounds.GetInbounds(); // Ambil data inbounds dari database
 
             guna2DataGridView1.Rows.Clear();
             int i = 1;
             foreach (DataRow row in dataTable.Rows)
             {
-                guna2DataGridView1.Rows.Add(i++, row["id"], row["product_id"], row["supplier_id"], row["quantity"], row["date"]);
+                guna2DataGridView1.Rows.Add(i++, row["id"], row["product_id"], row["supplier_name"], row["quantity"], row["date"]);
             }
+
         }
 
         private void buttonAdd(object sender, EventArgs e)

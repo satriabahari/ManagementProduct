@@ -84,6 +84,52 @@ namespace ManagementProduct.Class
             return false;
         }
 
+        public List<string> GetSuppliers()
+        {
+            List<string> suppliers = new List<string>();
+
+            string query = "SELECT name FROM supplier";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    suppliers.Add(dataReader["name"].ToString());
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return suppliers;
+        }
+
+        public int GetSupplierIdByName(string supplierName)
+        {
+            int supplierId = -1;
+
+            string query = "SELECT id FROM supplier WHERE name = @name";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@name", supplierName);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    supplierId = Convert.ToInt32(dataReader["id"]);
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return supplierId;
+        }
 
         public DataTable GetInbounds()
         {

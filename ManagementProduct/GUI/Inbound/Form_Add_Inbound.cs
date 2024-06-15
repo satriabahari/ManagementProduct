@@ -19,6 +19,16 @@ namespace ManagementProduct.GUI.Inbound
         {
             InitializeComponent();
             inbounds = new Inbounds();
+            LoadSuppliers();
+        }
+
+        private void LoadSuppliers()
+        {
+            List<string> suppliers = inbounds.GetSuppliers();
+            foreach (string supplier in suppliers)
+            {
+                inputSupplier.Items.Add(supplier);
+            }
         }
 
         private void buttonClose(object sender, EventArgs e)
@@ -38,11 +48,20 @@ namespace ManagementProduct.GUI.Inbound
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
-            bool success = inbounds.CreateInbound(product, supplier, quantity, date);
+
+            // Convert supplier name to supplier ID
+            int supplierId = GetSupplierIdByName(supplier);
+            if (supplierId == -1)
+            {
+                MessageBox.Show("Supplier not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bool success = inbounds.CreateInbound(product, supplierId.ToString(), quantity, date);
 
             if (success)
             {
-                MessageBox.Show("User data has been successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Inbound data has been successfully added.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (Owner is List_User crudForm)
                 {
@@ -53,8 +72,15 @@ namespace ManagementProduct.GUI.Inbound
             }
             else
             {
-                MessageBox.Show("User data was not successfully added.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Inbound data was not successfully added.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private int GetSupplierIdByName(string supplierName)
+        {
+            // Implement logic to get supplier ID by name
+            // You can add a method in Inbounds class to fetch supplier ID by name from the database
+            return inbounds.GetSupplierIdByName(supplierName);
         }
     }
 }

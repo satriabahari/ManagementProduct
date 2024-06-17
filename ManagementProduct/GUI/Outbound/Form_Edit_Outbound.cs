@@ -15,6 +15,7 @@ namespace ManagementProduct.GUI.Outbound
     {
         private int outboundId;
         private Outbounds outbounds;
+        private bool isLoading; // Flag to prevent events during initialization
 
         public event EventHandler OutboundUpdated;
 
@@ -23,7 +24,10 @@ namespace ManagementProduct.GUI.Outbound
             InitializeComponent();
             this.outboundId = outboundId;
             outbounds = new Outbounds();
+            isLoading = true;
             LoadUserData();
+            LoadCustomers(); // Load suppliers into ComboBox
+            isLoading = false;
         }
 
         private void buttonClose(object sender, EventArgs e)
@@ -37,30 +41,51 @@ namespace ManagementProduct.GUI.Outbound
             if (outbound != null)
             {
                 inputProduct.Text = outbound["product_id"].ToString();
-                inputCustomer.Text = outbound["customer_id"].ToString();
+                // Set supplier name instead of ID for display
+                inputCustomer.Text = outbounds.GetCustomerNameById(Convert.ToInt32(outbound["customer_id"]));
                 inputQuantity.Text = outbound["quantity"].ToString();
                 inputDate.Text = outbound["date"].ToString();
             }
             else
             {
-                MessageBox.Show("User not found.");
+                MessageBox.Show("Outbound data not found.");
+                Close();
+            }
+        }
+
+        private void LoadCustomers()
+        {
+            // Load suppliers into ComboBox
+            inputCustomer.Items.Clear();
+            List<string> customers = outbounds.GetCustomers();
+            foreach (string customer in customers)
+            {
+                inputCustomer.Items.Add(customer);
             }
         }
 
         private void buttonUpdate(object sender, EventArgs e)
         {
             string productValue = inputProduct.Text;
-            string customerValue = inputCustomer.Text;
+            string customerName = inputCustomer.Text;
             string quantityValue = inputQuantity.Text;
             string dateValue = inputDate.Text;
 
-            if (string.IsNullOrEmpty(productValue) || string.IsNullOrEmpty(customerValue) || string.IsNullOrEmpty(quantityValue) || string.IsNullOrEmpty(dateValue))
+            if (string.IsNullOrEmpty(productValue) || string.IsNullOrEmpty(customerName) || string.IsNullOrEmpty(quantityValue) || string.IsNullOrEmpty(dateValue))
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
             }
 
-            bool success = outbounds.UpdateOutbound(outboundId, productValue, customerValue, quantityValue, dateValue);
+            // Convert supplier name to supplier ID
+            int customerId = outbounds.GetCustomerIdByName(customerName);
+            if (customerId == -1)
+            {
+                MessageBox.Show("Supplier not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bool success = outbounds.UpdateOutbound(outboundId, productValue, customerId.ToString(), quantityValue, dateValue);
             if (success)
             {
                 MessageBox.Show("Data updated successfully.");
@@ -70,6 +95,15 @@ namespace ManagementProduct.GUI.Outbound
             else
             {
                 MessageBox.Show("Error updating data.");
+            }
+        }
+
+        private void inputSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // This event will fire when the user selects a different supplier from ComboBox
+            if (!isLoading)
+            {
+                // Implement any additional logic needed when supplier selection changes
             }
         }
     }

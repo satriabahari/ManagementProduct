@@ -53,7 +53,7 @@ namespace ManagementProduct.GUI.Inbound
             buttonSave = new Guna2Button();
             inputDate = new Guna2TextBox();
             label5 = new Label();
-            inputSupplier = new Guna2TextBox();
+            inputSupplier = new Guna2ComboBox();
             label3 = new Label();
             inputQuantity = new Guna2TextBox();
             label4 = new Label();
@@ -181,24 +181,24 @@ namespace ManagementProduct.GUI.Inbound
             // 
             inputSupplier.AutoRoundedCorners = true;
             inputSupplier.BorderRadius = 28;
-            inputSupplier.CustomizableEdges = customizableEdges11;
-            inputSupplier.DefaultText = "";
+            inputSupplier.CustomizableEdges = customizableEdges13;
+            //inputSupplier.DefaultText = "";
             inputSupplier.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputSupplier.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             inputSupplier.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            inputSupplier.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            //inputSupplier.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             inputSupplier.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             inputSupplier.Font = new Font("Segoe UI", 9F);
             inputSupplier.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             inputSupplier.Location = new Point(416, 203);
             inputSupplier.Margin = new Padding(4, 5, 4, 5);
             inputSupplier.Name = "inputSupplier";
-            inputSupplier.PasswordChar = '\0';
-            inputSupplier.PlaceholderText = "";
+            //inputSupplier.PasswordChar = '\0';
+            //inputSupplier.PlaceholderText = "";
             inputSupplier.SelectedText = "";
-            inputSupplier.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            inputSupplier.ShadowDecoration.CustomizableEdges = customizableEdges14;
             inputSupplier.Size = new Size(324, 59);
-            inputSupplier.TabIndex = 13;
+            inputSupplier.TabIndex = 16;
             inputSupplier.TextOffset = new Point(10, 0);
             // 
             // label3
@@ -313,7 +313,7 @@ namespace ManagementProduct.GUI.Inbound
         private Guna.UI2.WinForms.Guna2CirclePictureBox inputPicture;
         public Guna.UI2.WinForms.Guna2TextBox inputPhone;
         private Label label5;
-        private Guna2TextBox inputSupplier;
+        private Guna.UI2.WinForms.Guna2ComboBox inputSupplier;
         public Guna.UI2.WinForms.Guna2TextBox inputPassword;
         private Label label3;
         private Guna2TextBox inputQuantity;

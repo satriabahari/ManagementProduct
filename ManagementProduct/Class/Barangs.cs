@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ManagementProduct.Class
 {
-    internal class Products
+    internal class Barangs
     {
         private MySqlConnection connection;
         private string server;
@@ -27,7 +27,7 @@ namespace ManagementProduct.Class
             connection = new MySqlConnection(connectionString);
         }
 
-        public Products()
+        public Barangs()
         {
             InitializeDB();
         }
@@ -65,23 +65,95 @@ namespace ManagementProduct.Class
         {
             DataTable dataTable = new DataTable();
 
-            string query = "SELECT * FROM products";
+            string query = "SELECT p.id, p.name, c.name AS category_name, p.description, p.price, p.stock  FROM products p JOIN categories c ON p.category_id = c.id";
 
             if (OpenConnection())
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                adapter.Fill(dataTable);
-
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
                 CloseConnection();
             }
 
             return dataTable;
         }
 
+        public List<string> GetCategories()
+        {
+            List<string> categories = new List<string>();
+
+            string query = "SELECT name FROM categories";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    categories.Add(dataReader["name"].ToString());
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return categories;
+        }
+
+        public int GetCategoryIdByName(string categoryName)
+        {
+            int categoryId = -1;
+
+            string query = "SELECT id FROM categories WHERE name = @name";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@name", categoryName);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    categoryId = Convert.ToInt32(dataReader["id"]);
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return categoryId;
+        }
+
+        public string GetCategoryNameById(int categoryId)
+        {
+            string categoryName = "";
+
+            string query = "SELECT name FROM categories WHERE id = @id";
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@id", categoryId);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.Read())
+                {
+                    categoryName = dataReader["name"].ToString();
+                }
+
+                dataReader.Close();
+                CloseConnection();
+            }
+
+            return categoryName;
+        }
+
         public DataRow GetProductById(int productId)
         {
-            string query = "SELECT name FROM products WHERE id = @id";
+            string query = "SELECT name, category_id, description, stock, price FROM products WHERE id = @id";
 
             if (OpenConnection())
             {
@@ -125,7 +197,7 @@ namespace ManagementProduct.Class
             return null;
         }
 
-        public bool CreateProduct(string name, int category_id, string description, int stock, int price)
+        public bool CreateProduct(string name, string category_id, string description, string stock, string price)
         {
             string query = "INSERT INTO products (name, category_id, description, stock, price) VALUES (@name,  @category_id, @description, @stock, @price)";
 
@@ -148,7 +220,7 @@ namespace ManagementProduct.Class
             return false;
         }
 
-        public bool UpdateProduct(string name, int category_id, string description, int stock, int price)
+        public bool UpdateProduct(int productId, string name, string category_id, string description, string stock, string price)
         {
             string query = "UPDATE products SET name = @name, category_id = @category_id, description = @description, stock = @stock, price = @price WHERE id = @id";
 
@@ -157,6 +229,7 @@ namespace ManagementProduct.Class
                 try
                 {
                     MySqlCommand cmd = new MySqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@id", productId);
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@category_id", category_id);
                     cmd.Parameters.AddWithValue("@description", description);

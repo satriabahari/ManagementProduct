@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManagementProduct.GUI.Products;
 
 namespace ManagementProduct.GUI
 {
@@ -272,6 +273,26 @@ namespace ManagementProduct.GUI
 
             // Tampilkan Form_CRUDCategory
             crudSuppliersForm.Show();
+        }
+
+        private void guna2Button3_Click_1(object sender, EventArgs e)
+        {
+            // Membuat instance dari Form_CRUDCategory
+            List_Product crudProductsForm = new List_Product(darkModeEnabled);
+
+
+
+            // Mengatur properti TopLevel dan BorderStyle
+            crudProductsForm.TopLevel = false;
+            crudProductsForm.FormBorderStyle = FormBorderStyle.None;
+            crudProductsForm.Dock = DockStyle.Fill;
+            guna2Panel2.Controls.Clear();
+
+            // Tetapkan parent ke guna2Panel2
+            guna2Panel2.Controls.Add(crudProductsForm);
+
+            // Tampilkan Form_CRUDCategory
+            crudProductsForm.Show();
         }
     }
 }

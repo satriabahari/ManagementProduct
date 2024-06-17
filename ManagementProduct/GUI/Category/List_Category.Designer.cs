@@ -44,8 +44,10 @@
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             dgvNo = new DataGridViewTextBoxColumn();
-            dgvId = new DataGridViewTextBoxColumn();
+            dgvid = new DataGridViewTextBoxColumn();
             dgvName = new DataGridViewTextBoxColumn();
+            dgvEdit = new DataGridViewImageColumn();
+            dgvDel = new DataGridViewImageColumn();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             SuspendLayout();
@@ -143,10 +145,11 @@
             guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             guna2DataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             guna2DataGridView1.BorderStyle = BorderStyle.FixedSingle;
+            guna2DataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             guna2DataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(95, 61, 204);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -154,23 +157,25 @@
             guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             guna2DataGridView1.ColumnHeadersHeight = 50;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { dgvNo, dgvId, dgvName });
+            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { dgvNo, dgvid, dgvName, dgvEdit, dgvDel });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             guna2DataGridView1.GridColor = Color.Black;
-            guna2DataGridView1.Location = new Point(26, 234);
+            guna2DataGridView1.Location = new Point(26, 225);
             guna2DataGridView1.Name = "guna2DataGridView1";
-            guna2DataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            guna2DataGridView1.ReadOnly = true;
+            guna2DataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             guna2DataGridView1.RowHeadersVisible = false;
             guna2DataGridView1.RowHeadersWidth = 62;
-            guna2DataGridView1.Size = new Size(993, 415);
-            guna2DataGridView1.TabIndex = 1;
+            guna2DataGridView1.RowTemplate.Height = 50;
+            guna2DataGridView1.Size = new Size(919, 423);
+            guna2DataGridView1.TabIndex = 6;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
@@ -180,38 +185,65 @@
             guna2DataGridView1.ThemeStyle.GridColor = Color.Black;
             guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
             guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 50;
-            guna2DataGridView1.ThemeStyle.ReadOnly = false;
+            guna2DataGridView1.ThemeStyle.ReadOnly = true;
             guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 33;
+            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 50;
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
             // dgvNo
             // 
-            dgvNo.FillWeight = 50F;
+            dgvNo.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvNo.FillWeight = 70F;
             dgvNo.HeaderText = "No";
-            dgvNo.MinimumWidth = 8;
+            dgvNo.MinimumWidth = 70;
             dgvNo.Name = "dgvNo";
+            dgvNo.ReadOnly = true;
+            dgvNo.Width = 70;
             // 
-            // dgvId
+            // dgvid
             // 
-            dgvId.HeaderText = "Id";
-            dgvId.MinimumWidth = 8;
-            dgvId.Name = "dgvId";
-            dgvId.Visible = false;
+            dgvid.HeaderText = "id";
+            dgvid.MinimumWidth = 8;
+            dgvid.Name = "dgvid";
+            dgvid.ReadOnly = true;
+            dgvid.Visible = false;
             // 
             // dgvName
             // 
             dgvName.HeaderText = "Name";
             dgvName.MinimumWidth = 8;
             dgvName.Name = "dgvName";
+            dgvName.ReadOnly = true;
+            // 
+            // dgvEdit
+            // 
+            dgvEdit.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvEdit.FillWeight = 50F;
+            dgvEdit.HeaderText = "";
+            dgvEdit.Image = Properties.Resources.edit;
+            dgvEdit.MinimumWidth = 50;
+            dgvEdit.Name = "dgvEdit";
+            dgvEdit.ReadOnly = true;
+            dgvEdit.Width = 50;
+            // 
+            // dgvDel
+            // 
+            dgvDel.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvDel.FillWeight = 50F;
+            dgvDel.HeaderText = "";
+            dgvDel.Image = Properties.Resources.delete;
+            dgvDel.MinimumWidth = 50;
+            dgvDel.Name = "dgvDel";
+            dgvDel.ReadOnly = true;
+            dgvDel.Width = 50;
             // 
             // List_Category
             // 
@@ -232,13 +264,15 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        public Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         public Guna.UI2.WinForms.Guna2Button guna2Button1;
         public Label label1;
         public Label label2;
         public Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        public Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         private DataGridViewTextBoxColumn dgvNo;
-        private DataGridViewTextBoxColumn dgvId;
+        private DataGridViewTextBoxColumn dgvid;
         private DataGridViewTextBoxColumn dgvName;
+        private DataGridViewImageColumn dgvEdit;
+        private DataGridViewImageColumn dgvDel;
     }
 }

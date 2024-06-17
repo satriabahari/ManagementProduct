@@ -44,8 +44,6 @@ namespace ManagementProduct.GUI.Inbound
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna2Panel();
             label1 = new Label();
             guna2Panel2 = new Guna2Panel();
@@ -180,24 +178,25 @@ namespace ManagementProduct.GUI.Inbound
             // inputSupplier
             // 
             inputSupplier.AutoRoundedCorners = true;
-            inputSupplier.BorderRadius = 28;
-            inputSupplier.CustomizableEdges = customizableEdges13;
-            //inputSupplier.DefaultText = "";
+            inputSupplier.BackColor = Color.Transparent;
+            inputSupplier.BorderRadius = 29;
+            inputSupplier.CustomizableEdges = customizableEdges11;
             inputSupplier.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputSupplier.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             inputSupplier.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            //inputSupplier.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            inputSupplier.DrawMode = DrawMode.OwnerDrawFixed;
+            inputSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
+            inputSupplier.FocusedColor = Color.FromArgb(94, 148, 255);
             inputSupplier.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             inputSupplier.Font = new Font("Segoe UI", 9F);
+            inputSupplier.ForeColor = Color.FromArgb(68, 88, 112);
             inputSupplier.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            inputSupplier.ItemHeight = 55;
             inputSupplier.Location = new Point(416, 203);
             inputSupplier.Margin = new Padding(4, 5, 4, 5);
             inputSupplier.Name = "inputSupplier";
-            //inputSupplier.PasswordChar = '\0';
-            //inputSupplier.PlaceholderText = "";
-            inputSupplier.SelectedText = "";
-            inputSupplier.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            inputSupplier.Size = new Size(324, 59);
+            inputSupplier.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            inputSupplier.Size = new Size(324, 61);
             inputSupplier.TabIndex = 16;
             inputSupplier.TextOffset = new Point(10, 0);
             // 
@@ -214,7 +213,7 @@ namespace ManagementProduct.GUI.Inbound
             // 
             inputQuantity.AutoRoundedCorners = true;
             inputQuantity.BorderRadius = 28;
-            inputQuantity.CustomizableEdges = customizableEdges13;
+            inputQuantity.CustomizableEdges = customizableEdges11;
             inputQuantity.DefaultText = "";
             inputQuantity.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputQuantity.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -229,7 +228,7 @@ namespace ManagementProduct.GUI.Inbound
             inputQuantity.PasswordChar = '\0';
             inputQuantity.PlaceholderText = "";
             inputQuantity.SelectedText = "";
-            inputQuantity.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            inputQuantity.ShadowDecoration.CustomizableEdges = customizableEdges12;
             inputQuantity.Size = new Size(324, 59);
             inputQuantity.TabIndex = 14;
             inputQuantity.TextOffset = new Point(10, 0);
@@ -247,7 +246,7 @@ namespace ManagementProduct.GUI.Inbound
             // 
             inputProduct.AutoRoundedCorners = true;
             inputProduct.BorderRadius = 28;
-            inputProduct.CustomizableEdges = customizableEdges15;
+            inputProduct.CustomizableEdges = customizableEdges13;
             inputProduct.DefaultText = "";
             inputProduct.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputProduct.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -262,7 +261,7 @@ namespace ManagementProduct.GUI.Inbound
             inputProduct.PasswordChar = '\0';
             inputProduct.PlaceholderText = "";
             inputProduct.SelectedText = "";
-            inputProduct.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            inputProduct.ShadowDecoration.CustomizableEdges = customizableEdges14;
             inputProduct.Size = new Size(324, 59);
             inputProduct.TabIndex = 12;
             inputProduct.TextOffset = new Point(10, 0);

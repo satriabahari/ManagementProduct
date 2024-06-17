@@ -97,14 +97,5 @@ namespace ManagementProduct.GUI.Inbound
                 MessageBox.Show("Error updating data.");
             }
         }
-
-        private void inputSupplier_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // This event will fire when the user selects a different supplier from ComboBox
-            if (!isLoading)
-            {
-                // Implement any additional logic needed when supplier selection changes
-            }
-        }
     }
 }

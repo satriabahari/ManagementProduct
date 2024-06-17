@@ -44,20 +44,18 @@ namespace ManagementProduct.GUI.Outbound
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            guna2Panel1 = new Guna2Panel();
             label1 = new Label();
-            guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            buttonCancel = new Guna.UI2.WinForms.Guna2Button();
-            buttonSave = new Guna.UI2.WinForms.Guna2Button();
-            inputDate = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2Panel2 = new Guna2Panel();
+            buttonCancel = new Guna2Button();
+            buttonSave = new Guna2Button();
+            inputDate = new Guna2TextBox();
             label5 = new Label();
             inputCustomer = new Guna2ComboBox();
             label3 = new Label();
-            inputQuantity = new Guna.UI2.WinForms.Guna2TextBox();
+            inputQuantity = new Guna2TextBox();
             label4 = new Label();
-            inputProduct = new Guna.UI2.WinForms.Guna2TextBox();
+            inputProduct = new Guna2TextBox();
             label2 = new Label();
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
@@ -180,24 +178,25 @@ namespace ManagementProduct.GUI.Outbound
             // inputCustomer
             // 
             inputCustomer.AutoRoundedCorners = true;
-            inputCustomer.BorderRadius = 28;
-            inputCustomer.CustomizableEdges = customizableEdges13;
-            //inputSupplier.DefaultText = "";
+            inputCustomer.BackColor = Color.Transparent;
+            inputCustomer.BorderRadius = 29;
+            inputCustomer.CustomizableEdges = customizableEdges11;
             inputCustomer.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputCustomer.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             inputCustomer.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            //inputSupplier.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            inputCustomer.DrawMode = DrawMode.OwnerDrawFixed;
+            inputCustomer.DropDownStyle = ComboBoxStyle.DropDownList;
+            inputCustomer.FocusedColor = Color.FromArgb(94, 148, 255);
             inputCustomer.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             inputCustomer.Font = new Font("Segoe UI", 9F);
+            inputCustomer.ForeColor = Color.FromArgb(68, 88, 112);
             inputCustomer.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            inputCustomer.ItemHeight = 55;
             inputCustomer.Location = new Point(416, 203);
             inputCustomer.Margin = new Padding(4, 5, 4, 5);
-            inputCustomer.Name = "inputSupplier";
-            //inputSupplier.PasswordChar = '\0';
-            //inputSupplier.PlaceholderText = "";
-            inputCustomer.SelectedText = "";
-            inputCustomer.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            inputCustomer.Size = new Size(324, 59);
+            inputCustomer.Name = "inputCustomer";
+            inputCustomer.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            inputCustomer.Size = new Size(324, 61);
             inputCustomer.TabIndex = 16;
             inputCustomer.TextOffset = new Point(10, 0);
             // 
@@ -214,7 +213,7 @@ namespace ManagementProduct.GUI.Outbound
             // 
             inputQuantity.AutoRoundedCorners = true;
             inputQuantity.BorderRadius = 28;
-            inputQuantity.CustomizableEdges = customizableEdges13;
+            inputQuantity.CustomizableEdges = customizableEdges11;
             inputQuantity.DefaultText = "";
             inputQuantity.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputQuantity.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -229,7 +228,7 @@ namespace ManagementProduct.GUI.Outbound
             inputQuantity.PasswordChar = '\0';
             inputQuantity.PlaceholderText = "";
             inputQuantity.SelectedText = "";
-            inputQuantity.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            inputQuantity.ShadowDecoration.CustomizableEdges = customizableEdges12;
             inputQuantity.Size = new Size(324, 59);
             inputQuantity.TabIndex = 25;
             inputQuantity.TextOffset = new Point(10, 0);
@@ -247,7 +246,7 @@ namespace ManagementProduct.GUI.Outbound
             // 
             inputProduct.AutoRoundedCorners = true;
             inputProduct.BorderRadius = 28;
-            inputProduct.CustomizableEdges = customizableEdges15;
+            inputProduct.CustomizableEdges = customizableEdges13;
             inputProduct.DefaultText = "";
             inputProduct.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputProduct.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -262,7 +261,7 @@ namespace ManagementProduct.GUI.Outbound
             inputProduct.PasswordChar = '\0';
             inputProduct.PlaceholderText = "";
             inputProduct.SelectedText = "";
-            inputProduct.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            inputProduct.ShadowDecoration.CustomizableEdges = customizableEdges14;
             inputProduct.Size = new Size(324, 59);
             inputProduct.TabIndex = 23;
             inputProduct.TextOffset = new Point(10, 0);

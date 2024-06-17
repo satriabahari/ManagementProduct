@@ -177,7 +177,7 @@
             guna2DataGridView1.RowHeadersVisible = false;
             guna2DataGridView1.RowHeadersWidth = 62;
             guna2DataGridView1.RowTemplate.Height = 50;
-            guna2DataGridView1.Size = new Size(919, 423);
+            guna2DataGridView1.Size = new Size(919, 357);
             guna2DataGridView1.TabIndex = 5;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -274,7 +274,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1048, 820);
+            ClientSize = new Size(1048, 754);
             Controls.Add(guna2Panel1);
             Controls.Add(guna2DataGridView1);
             FormBorderStyle = FormBorderStyle.None;

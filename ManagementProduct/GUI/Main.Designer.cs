@@ -356,6 +356,7 @@
             guna2Button3.Text = "Products";
             guna2Button3.TextAlign = HorizontalAlignment.Left;
             guna2Button3.TextOffset = new Point(30, 0);
+            guna2Button3.Click += guna2Button3_Click_1;
             // 
             // guna2Button2
             // 

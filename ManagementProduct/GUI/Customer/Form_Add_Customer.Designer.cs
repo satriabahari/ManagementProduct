@@ -66,7 +66,7 @@
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.CustomizableEdges = customizableEdges1;
             guna2Panel1.Dock = DockStyle.Top;
-            guna2Panel1.FillColor = Color.FromArgb(95, 61, 204);
+            guna2Panel1.FillColor = Color.FromArgb(34, 211, 238);
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -81,7 +81,7 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(53, 54);
             label1.Name = "label1";
-            label1.Size = new Size(165, 38);
+            label1.Size = new Size(228, 38);
             label1.TabIndex = 0;
             label1.Text = "Customer Details";
             // 
@@ -131,7 +131,7 @@
             buttonSave.DisabledState.CustomBorderColor = Color.DarkGray;
             buttonSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             buttonSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            buttonSave.FillColor = Color.FromArgb(95, 61, 204);
+            buttonSave.FillColor = Color.FromArgb(34, 211, 238);
             buttonSave.Font = new Font("Segoe UI", 9F);
             buttonSave.ForeColor = Color.White;
             buttonSave.Location = new Point(53, 34);
@@ -147,7 +147,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(67, 170);
             label2.Name = "label2";
-            label2.Size = new Size(99, 28);
+            label2.Size = new Size(64, 28);
             label2.TabIndex = 6;
             label2.Text = "Name";
             // 
@@ -182,13 +182,13 @@
             inputAddress.CustomizableEdges = customizableEdges11;
             inputAddress.DefaultText = "";
             inputAddress.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            inputAddress    .DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            inputAddress    .DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            inputAddress.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            inputAddress.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             inputAddress.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             inputAddress.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             inputAddress.Font = new Font("Segoe UI", 9F);
             inputAddress.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            inputAddress    .Location = new Point(416, 203);
+            inputAddress.Location = new Point(416, 203);
             inputAddress.Margin = new Padding(4, 5, 4, 5);
             inputAddress.Name = "inputAddress";
             inputAddress.PasswordChar = '\0';
@@ -204,7 +204,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(430, 170);
             label3.Name = "label3";
-            label3.Size = new Size(93, 28);
+            label3.Size = new Size(82, 28);
             label3.TabIndex = 7;
             label3.Text = "Address";
             // 

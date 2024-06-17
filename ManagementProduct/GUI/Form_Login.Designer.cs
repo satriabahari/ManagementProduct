@@ -49,6 +49,7 @@ namespace ManagementProduct.GUI
             txtPass = new Guna2TextBox();
             guna2CirclePictureBox1 = new Guna2CirclePictureBox();
             guna2vSeparator1 = new Guna2VSeparator();
+            linkRegister = new Label();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2CirclePictureBox1).BeginInit();
             SuspendLayout();
@@ -110,7 +111,7 @@ namespace ManagementProduct.GUI
             btnLogin.DisabledState.CustomBorderColor = Color.DarkGray;
             btnLogin.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnLogin.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnLogin.FillColor = Color.FromArgb(95, 61, 204);
+            btnLogin.FillColor = Color.FromArgb(34, 211, 238);
             btnLogin.Font = new Font("Segoe UI", 12F);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(400, 345);
@@ -185,17 +186,18 @@ namespace ManagementProduct.GUI
             guna2vSeparator1.Name = "guna2vSeparator1";
             guna2vSeparator1.Size = new Size(10, 350);
             guna2vSeparator1.TabIndex = 6;
-
-            linkRegister = new Label();
+            // 
+            // linkRegister
+            // 
             linkRegister.AutoSize = true;
             linkRegister.Font = new Font("Segoe UI", 9.75F, FontStyle.Underline, GraphicsUnit.Point, 0);
             linkRegister.ForeColor = Color.Blue;
             linkRegister.Location = new Point(400, 400);
             linkRegister.Name = "linkRegister";
-            linkRegister.Size = new Size(200, 20);
+            linkRegister.Size = new Size(334, 28);
             linkRegister.TabIndex = 6;
             linkRegister.Text = "Don't have an account? Register here";
-            linkRegister.Click += new EventHandler(linkRegister_Click);
+            linkRegister.Click += linkRegister_Click;
             // 
             // Form_Login
             // 

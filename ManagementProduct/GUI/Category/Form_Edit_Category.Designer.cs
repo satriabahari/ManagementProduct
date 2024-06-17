@@ -54,7 +54,7 @@
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.CustomizableEdges = customizableEdges1;
             guna2Panel1.Dock = DockStyle.Top;
-            guna2Panel1.FillColor = Color.FromArgb(95, 61, 204);
+            guna2Panel1.FillColor = Color.FromArgb(34, 211, 238);
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -119,7 +119,7 @@
             buttonSave.DisabledState.CustomBorderColor = Color.DarkGray;
             buttonSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             buttonSave.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            buttonSave.FillColor = Color.FromArgb(95, 61, 204);
+            buttonSave.FillColor = Color.FromArgb(34, 211, 238);
             buttonSave.Font = new Font("Segoe UI", 9F);
             buttonSave.ForeColor = Color.White;
             buttonSave.Location = new Point(53, 34);

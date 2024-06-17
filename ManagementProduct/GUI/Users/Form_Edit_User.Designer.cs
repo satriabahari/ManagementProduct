@@ -74,7 +74,7 @@ namespace ManagementProduct.GUI
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.CustomizableEdges = customizableEdges1;
             guna2Panel1.Dock = DockStyle.Top;
-            guna2Panel1.FillColor = Color.FromArgb(95, 61, 204);
+            guna2Panel1.FillColor = Color.FromArgb(34, 211, 238);
             guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -139,7 +139,7 @@ namespace ManagementProduct.GUI
             guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(95, 61, 204);
+            guna2Button1.FillColor = Color.FromArgb(34, 211, 238);
             guna2Button1.Font = new Font("Segoe UI", 9F);
             guna2Button1.ForeColor = Color.White;
             guna2Button1.Location = new Point(53, 34);
@@ -304,7 +304,7 @@ namespace ManagementProduct.GUI
             btnBrowse.DisabledState.CustomBorderColor = Color.DarkGray;
             btnBrowse.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnBrowse.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnBrowse.FillColor = Color.FromArgb(123, 92, 204);
+            btnBrowse.FillColor = Color.FromArgb(34, 211, 238);
             btnBrowse.Font = new Font("Segoe UI", 9F);
             btnBrowse.ForeColor = Color.White;
             btnBrowse.Location = new Point(821, 323);
@@ -315,7 +315,7 @@ namespace ManagementProduct.GUI
             btnBrowse.Text = "Browse";
             btnBrowse.Click += buttonBrowseImage;
             // 
-            // Form_editUsers
+            // Form_Edit_User
             // 
             AutoScaleDimensions = new SizeF(144F, 144F);
             AutoScaleMode = AutoScaleMode.Dpi;
@@ -336,7 +336,7 @@ namespace ManagementProduct.GUI
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = Color.FromArgb(71, 69, 94);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form_editUsers";
+            Name = "Form_Edit_User";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form_addUsers";
             guna2Panel1.ResumeLayout(false);

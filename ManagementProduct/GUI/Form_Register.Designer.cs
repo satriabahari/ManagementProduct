@@ -124,7 +124,7 @@ namespace ManagementProduct.GUI
             btnRegister.DisabledState.CustomBorderColor = Color.DarkGray;
             btnRegister.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnRegister.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnRegister.FillColor = Color.FromArgb(95, 61, 204);
+            btnRegister.FillColor = Color.FromArgb(34, 211, 238);
             btnRegister.Font = new Font("Segoe UI", 12F);
             btnRegister.ForeColor = Color.White;
             btnRegister.Location = new Point(416, 559);
@@ -230,7 +230,7 @@ namespace ManagementProduct.GUI
             btnBrowse.DisabledState.CustomBorderColor = Color.DarkGray;
             btnBrowse.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnBrowse.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnBrowse.FillColor = Color.FromArgb(123, 92, 204);
+            btnBrowse.FillColor = Color.FromArgb(34, 211, 238);
             btnBrowse.Font = new Font("Segoe UI", 9F);
             btnBrowse.ForeColor = Color.White;
             btnBrowse.Location = new Point(647, 243);

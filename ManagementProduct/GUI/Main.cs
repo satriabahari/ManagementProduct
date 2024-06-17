@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ManagementProduct.GUI.Products;
+using ManagementProduct.GUI.Home;
 
 namespace ManagementProduct.GUI
 {
@@ -293,6 +294,21 @@ namespace ManagementProduct.GUI
 
             // Tampilkan Form_CRUDCategory
             crudProductsForm.Show();
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Form_Home homeForm = new Form_Home();
+            homeForm.TopLevel = false;
+            homeForm.FormBorderStyle = FormBorderStyle.None;
+            homeForm.Dock = DockStyle.Fill;
+            guna2Panel2.Controls.Clear();
+
+            // Tetapkan parent ke guna2Panel2
+            guna2Panel2.Controls.Add(homeForm);
+
+            // Tampilkan Form_CRUDCategory
+            homeForm.Show();
         }
     }
 }

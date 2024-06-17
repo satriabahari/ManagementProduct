@@ -107,7 +107,7 @@
             btnAdd.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAdd.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAdd.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnAdd.FillColor = Color.FromArgb(95, 61, 204);
+            btnAdd.FillColor = Color.FromArgb(34, 211, 238);
             btnAdd.Font = new Font("Segoe UI", 9F);
             btnAdd.ForeColor = Color.White;
             btnAdd.Image = Properties.Resources.add;
@@ -151,7 +151,7 @@
             guna2DataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             guna2DataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(95, 61, 204);
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(34, 211, 238);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;

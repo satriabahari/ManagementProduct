@@ -22,7 +22,6 @@ namespace ManagementProduct.GUI
         {
             InitializeComponent();
             LoadData();
-            users = new Users();
             buttonDarkMode(isDarkModeEnabled);
         }
 

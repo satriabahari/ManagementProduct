@@ -53,7 +53,7 @@ namespace ManagementProduct.GUI
                 MessageBox.Show("User data not found.");
             }
 
-            UpdateDarkModeButton();
+            //UpdateDarkModeButton();
 
             btnMax.PerformClick();
         }
@@ -101,26 +101,26 @@ namespace ManagementProduct.GUI
             crudUsersForm.Show();
         }
 
-        private void EnableDarkMode()
-        {
-            // Mengatur warna latar belakang form
-            this.BackColor = Color.FromArgb(45, 45, 48);
+        //private void EnableDarkMode()
+        //{
+        //    // Mengatur warna latar belakang form
+        //    this.BackColor = Color.FromArgb(45, 45, 48);
 
-            // Mengatur warna teks
-            this.ForeColor = Color.White;
+        //    // Mengatur warna teks
+        //    this.ForeColor = Color.White;
 
-            // Mengatur warna latar belakang panel-panel
-            guna2Panel1.FillColor = Color.FromArgb(35, 35, 38);
-            guna2Panel2.FillColor = Color.FromArgb(35, 35, 38);
-            guna2Panel3.FillColor = Color.FromArgb(35, 35, 38);
-            btnDarkMode.BackColor = Color.FromArgb(35, 35, 38);
-            // Mengubah status mode menjadi gelap
-            darkModeEnabled = true;
+        //    // Mengatur warna latar belakang panel-panel
+        //    guna2Panel1.FillColor = Color.FromArgb(35, 35, 38);
+        //    guna2Panel2.FillColor = Color.FromArgb(35, 35, 38);
+        //    guna2Panel3.FillColor = Color.FromArgb(35, 35, 38);
+        //    btnDarkMode.BackColor = Color.FromArgb(35, 35, 38);
+        //    // Mengubah status mode menjadi gelap
+        //    darkModeEnabled = true;
 
-            UpdateDarkModeButton();
+        //    UpdateDarkModeButton();
 
-            DarkModeChanged?.Invoke(this, EventArgs.Empty);
-        }
+        //    DarkModeChanged?.Invoke(this, EventArgs.Empty);
+        //}
 
         // Fungsi untuk mengembalikan tema aplikasi ke mode normal
         private void DisableDarkMode()
@@ -134,53 +134,53 @@ namespace ManagementProduct.GUI
             // Mengatur warna latar belakang panel-panel
             guna2Panel1.FillColor = Color.Transparent;
             guna2Panel2.FillColor = Color.Transparent;
-            btnDarkMode.BackColor = Color.FromArgb(239, 243, 248);
+            //btnDarkMode.BackColor = Color.FromArgb(239, 243, 248);
             guna2Panel3.FillColor = Color.FromArgb(95, 61, 204);
 
             // Mengubah status mode menjadi normal
             darkModeEnabled = false;
 
-            UpdateDarkModeButton();
+            //UpdateDarkModeButton();
 
             DarkModeChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        private void ToggleDarkMode()
-        {
-            if (darkModeEnabled)
-            {
-                DisableDarkMode();
-            }
-            else
-            {
-                EnableDarkMode();
-            }
+        //private void ToggleDarkMode()
+        //{
+        //    if (darkModeEnabled)
+        //    {
+        //        DisableDarkMode();
+        //    }
+        //    else
+        //    {
+        //        EnableDarkMode();
+        //    }
 
-            // Perbarui Form_crudUsers jika sedang ditampilkan
-            if (guna2Panel2.Controls.Count > 0 && guna2Panel2.Controls[0] is List_User)
-            {
-                ((List_User)guna2Panel2.Controls[0]).buttonDarkMode(darkModeEnabled);
-            }
-        }
+        //    // Perbarui Form_crudUsers jika sedang ditampilkan
+        //    if (guna2Panel2.Controls.Count > 0 && guna2Panel2.Controls[0] is List_User)
+        //    {
+        //        ((List_User)guna2Panel2.Controls[0]).buttonDarkMode(darkModeEnabled);
+        //    }
+        //}
 
-        private void UpdateDarkModeButton()
-        {
-            if (darkModeEnabled)
-            {
-                btnDarkMode.Image = Properties.Resources.bulan;
-                btnDarkMode.FillColor = Color.Black;
-            }
-            else
-            {
-                btnDarkMode.Image = Properties.Resources.light;
-                btnDarkMode.FillColor = Color.WhiteSmoke;
-            }
-        }
+        //private void UpdateDarkModeButton()
+        //{
+        //    if (darkModeEnabled)
+        //    {
+        //        btnDarkMode.Image = Properties.Resources.bulan;
+        //        btnDarkMode.FillColor = Color.Black;
+        //    }
+        //    else
+        //    {
+        //        btnDarkMode.Image = Properties.Resources.light;
+        //        btnDarkMode.FillColor = Color.WhiteSmoke;
+        //    }
+        //}
 
-        private void btnDarkMode_Click(object sender, EventArgs e)
-        {
-            ToggleDarkMode(); // Panggil fungsi untuk mengubah mode
-        }
+        //private void btnDarkMode_Click(object sender, EventArgs e)
+        //{
+        //    ToggleDarkMode(); // Panggil fungsi untuk mengubah mode
+        //}
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {

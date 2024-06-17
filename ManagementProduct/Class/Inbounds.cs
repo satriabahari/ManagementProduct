@@ -41,7 +41,6 @@ namespace ManagementProduct.Class
             }
             catch (MySqlException ex)
             {
-                // Handle exception
                 Console.WriteLine("Error: " + ex.Message);
                 return false;
             }
@@ -56,7 +55,6 @@ namespace ManagementProduct.Class
             }
             catch (MySqlException ex)
             {
-                // Handle exception
                 Console.WriteLine("Error: " + ex.Message);
                 return false;
             }

@@ -77,10 +77,10 @@ namespace ManagementProduct.GUI.Category
                 // Jika kolom delete yang diklik
                 else if (e.ColumnIndex == guna2DataGridView1.Columns["dgvDel"].Index)
                 {
-                    int userId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["dgvid"].Value);
+                    int categoryId = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["dgvid"].Value);
                     if (MessageBox.Show("Are you sure you want to delete this category?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        if (categories.DeleteCategory(userId))
+                        if (categories.DeleteCategory(categoryId))
                         {
                             MessageBox.Show("Category deleted successfully.");
                             LoadData();

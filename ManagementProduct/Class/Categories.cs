@@ -154,7 +154,7 @@ namespace ManagementProduct.Class
                 try
                 {
                     MySqlCommand cmd = new MySqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@username", name);
+                    cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@id", categoryId);
                     cmd.ExecuteNonQuery();
                     CloseConnection();

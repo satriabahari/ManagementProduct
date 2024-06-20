@@ -20,15 +20,13 @@ namespace ManagementProduct.GUI.Inbound
         public List_Inbound(bool isDarkModeEnabled)
         {
             InitializeComponent();
-            inbounds = new Inbounds(); // Inisialisasi objek Inbounds
-            buttonDarkMode(isDarkModeEnabled);
+            inbounds = new Inbounds(); 
             LoadData();
         }
 
-        // Metode LoadData() yang diperbaiki
         private void LoadData()
         {
-            DataTable dataTable = inbounds.GetInbounds(); // Ambil data inbounds dari database
+            DataTable dataTable = inbounds.GetInbounds(); 
 
             guna2DataGridView1.Rows.Clear();
             int i = 1;
@@ -46,22 +44,6 @@ namespace ManagementProduct.GUI.Inbound
                 Owner = this
             };
             formAddInbound.ShowDialog();
-        }
-
-        public void buttonDarkMode(bool isDarkMode)
-        {
-            if (isDarkMode)
-            {
-                // Terapkan warna-warna untuk mode gelap
-                this.BackColor = Color.FromArgb(45, 45, 48); // Warna latar belakang gelap
-                this.ForeColor = Color.White; // Warna teks putih
-            }
-            else
-            {
-                // Terapkan warna-warna untuk mode normal
-                this.BackColor = SystemColors.Control; // Warna latar belakang default
-                this.ForeColor = SystemColors.ControlText; // Warna teks default
-            }
         }
 
         private void buttonActions(object sender, DataGridViewCellEventArgs e)

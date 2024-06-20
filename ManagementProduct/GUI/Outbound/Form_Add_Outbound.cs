@@ -19,6 +19,7 @@ namespace ManagementProduct.GUI.Outbound
             InitializeComponent();
             outbounds = new Outbounds();
             LoadCustomers();
+            LoadProducts();
         }
 
         private void LoadCustomers()
@@ -27,6 +28,15 @@ namespace ManagementProduct.GUI.Outbound
             foreach (string customer in customers)
             {
                 inputCustomer.Items.Add(customer);
+            }
+        }
+
+        private void LoadProducts()
+        {
+            List<string> products = outbounds.GetProducts();
+            foreach (string product in products)
+            {
+                inputProduct.Items.Add(product);
             }
         }
 
@@ -56,7 +66,14 @@ namespace ManagementProduct.GUI.Outbound
                 return;
             }
 
-            bool success = outbounds.CreateOutbound(product, customerId.ToString(), quantity, date);
+            int productId = GetProductIdByName(product);
+            if (productId == -1)
+            {
+                MessageBox.Show("Product not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bool success = outbounds.CreateOutbound(productId.ToString(), customerId.ToString(), quantity, date);
 
             if (success)
             {
@@ -80,6 +97,13 @@ namespace ManagementProduct.GUI.Outbound
             // Implement logic to get supplier ID by name
             // You can add a method in Inbounds class to fetch supplier ID by name from the database
             return outbounds.GetCustomerIdByName(customerName);
+        }
+
+        private int GetProductIdByName(string productName)
+        {
+            // Implement logic to get supplier ID by name
+            // You can add a method in Inbounds class to fetch supplier ID by name from the database
+            return outbounds.GetProductIdByName(productName);
         }
     }
 }

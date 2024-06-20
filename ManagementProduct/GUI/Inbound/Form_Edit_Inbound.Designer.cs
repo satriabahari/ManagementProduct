@@ -42,8 +42,6 @@ namespace ManagementProduct.GUI.Inbound
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna2Panel();
             label1 = new Label();
             guna2Panel2 = new Guna2Panel();
@@ -55,7 +53,7 @@ namespace ManagementProduct.GUI.Inbound
             label3 = new Label();
             inputQuantity = new Guna2TextBox();
             label4 = new Label();
-            inputProduct = new Guna2TextBox();
+            inputProduct = new Guna2ComboBox();
             label2 = new Label();
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
@@ -192,7 +190,7 @@ namespace ManagementProduct.GUI.Inbound
             inputSupplier.ForeColor = Color.FromArgb(68, 88, 112);
             inputSupplier.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             inputSupplier.ItemHeight = 55;
-            inputSupplier.Location = new Point(416, 203);
+            inputSupplier.Location = new Point(416, 200);
             inputSupplier.Margin = new Padding(4, 5, 4, 5);
             inputSupplier.Name = "inputSupplier";
             inputSupplier.ShadowDecoration.CustomizableEdges = customizableEdges12;
@@ -245,25 +243,26 @@ namespace ManagementProduct.GUI.Inbound
             // inputProduct
             // 
             inputProduct.AutoRoundedCorners = true;
-            inputProduct.BorderRadius = 28;
-            inputProduct.CustomizableEdges = customizableEdges13;
-            inputProduct.DefaultText = "";
+            inputProduct.BackColor = Color.Transparent;
+            inputProduct.BorderRadius = 29;
+            inputProduct.CustomizableEdges = customizableEdges11;
             inputProduct.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             inputProduct.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             inputProduct.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            inputProduct.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            inputProduct.DrawMode = DrawMode.OwnerDrawFixed;
+            inputProduct.DropDownStyle = ComboBoxStyle.DropDownList;
+            inputProduct.FocusedColor = Color.FromArgb(94, 148, 255);
             inputProduct.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             inputProduct.Font = new Font("Segoe UI", 9F);
+            inputProduct.ForeColor = Color.FromArgb(68, 88, 112);
             inputProduct.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            inputProduct.Location = new Point(53, 203);
+            inputProduct.ItemHeight = 55;
+            inputProduct.Location = new Point(53, 200);
             inputProduct.Margin = new Padding(4, 5, 4, 5);
             inputProduct.Name = "inputProduct";
-            inputProduct.PasswordChar = '\0';
-            inputProduct.PlaceholderText = "";
-            inputProduct.SelectedText = "";
-            inputProduct.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            inputProduct.Size = new Size(324, 59);
-            inputProduct.TabIndex = 12;
+            inputProduct.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            inputProduct.Size = new Size(324, 61);
+            inputProduct.TabIndex = 16;
             inputProduct.TextOffset = new Point(10, 0);
             // 
             // label2
@@ -313,7 +312,7 @@ namespace ManagementProduct.GUI.Inbound
         private Label label3;
         public Guna.UI2.WinForms.Guna2TextBox inputQuantity;
         private Label label4;
-        public Guna.UI2.WinForms.Guna2TextBox inputProduct;
+        private Guna.UI2.WinForms.Guna2ComboBox inputProduct;
         private Label label2;
     }
 }

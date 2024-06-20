@@ -27,6 +27,7 @@ namespace ManagementProduct.GUI.Inbound
             isLoading = true;
             LoadUserData();
             LoadSuppliers(); // Load suppliers into ComboBox
+            LoadProducts();
             isLoading = false;
         }
 
@@ -40,7 +41,7 @@ namespace ManagementProduct.GUI.Inbound
             DataRow inbound = inbounds.GetInboundById(inboundId);
             if (inbound != null)
             {
-                inputProduct.Text = inbound["product_id"].ToString();
+                inputProduct.Text = inbounds.GetProductNameById(Convert.ToInt32(inbound["supplier_id"]));
                 // Set supplier name instead of ID for display
                 inputSupplier.Text = inbounds.GetSupplierNameById(Convert.ToInt32(inbound["supplier_id"]));
                 inputQuantity.Text = inbound["quantity"].ToString();
@@ -64,14 +65,25 @@ namespace ManagementProduct.GUI.Inbound
             }
         }
 
+        private void LoadProducts()
+        {
+            // Load suppliers into ComboBox
+            inputProduct.Items.Clear();
+            List<string> products = inbounds.GetProducts();
+            foreach (string product in products)
+            {
+                inputProduct.Items.Add(product);
+            }
+        }
+
         private void buttonUpdate(object sender, EventArgs e)
         {
-            string productValue = inputProduct.Text;
+            string productName = inputProduct.Text;
             string supplierName = inputSupplier.Text; // Get supplier name from ComboBox
             string quantityValue = inputQuantity.Text;
             string dateValue = inputDate.Text;
 
-            if (string.IsNullOrEmpty(productValue) || string.IsNullOrEmpty(supplierName) || string.IsNullOrEmpty(quantityValue) || string.IsNullOrEmpty(dateValue))
+            if (string.IsNullOrEmpty(productName) || string.IsNullOrEmpty(supplierName) || string.IsNullOrEmpty(quantityValue) || string.IsNullOrEmpty(dateValue))
             {
                 MessageBox.Show("Please fill in all fields.");
                 return;
@@ -85,7 +97,14 @@ namespace ManagementProduct.GUI.Inbound
                 return;
             }
 
-            bool success = inbounds.UpdateInbound(inboundId, productValue, supplierId.ToString(), quantityValue, dateValue);
+            int productId = inbounds.GetProductIdByName(productName);
+            if (productId == -1)
+            {
+                MessageBox.Show("Product not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bool success = inbounds.UpdateInbound(inboundId, productId.ToString(), supplierId.ToString(), quantityValue, dateValue);
             if (success)
             {
                 MessageBox.Show("Data updated successfully.");

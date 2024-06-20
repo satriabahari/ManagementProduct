@@ -20,6 +20,7 @@ namespace ManagementProduct.GUI.Inbound
             InitializeComponent();
             inbounds = new Inbounds();
             LoadSuppliers();
+            LoadProducts();
         }
 
         private void LoadSuppliers()
@@ -28,6 +29,15 @@ namespace ManagementProduct.GUI.Inbound
             foreach (string supplier in suppliers)
             {
                 inputSupplier.Items.Add(supplier);
+            }
+        }
+
+        private void LoadProducts()
+        {
+            List<string> products = inbounds.GetProducts();
+            foreach (string product in products)
+            {
+                inputProduct.Items.Add(product);
             }
         }
 
@@ -57,7 +67,14 @@ namespace ManagementProduct.GUI.Inbound
                 return;
             }
 
-            bool success = inbounds.CreateInbound(product, supplierId.ToString(), quantity, date);
+            int productId = GetProductIdByName(product);
+            if (productId == -1)
+            {
+                MessageBox.Show("Product not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bool success = inbounds.CreateInbound(productId.ToString(), supplierId.ToString(), quantity, date);
 
             if (success)
             {
@@ -81,6 +98,13 @@ namespace ManagementProduct.GUI.Inbound
             // Implement logic to get supplier ID by name
             // You can add a method in Inbounds class to fetch supplier ID by name from the database
             return inbounds.GetSupplierIdByName(supplierName);
+        }
+
+        private int GetProductIdByName(string productName)
+        {
+            // Implement logic to get supplier ID by name
+            // You can add a method in Inbounds class to fetch supplier ID by name from the database
+            return inbounds.GetProductIdByName(productName);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace ManagementProduct.GUI.Inbound
             int i = 1;
             foreach (DataRow row in dataTable.Rows)
             {
-                guna2DataGridView1.Rows.Add(i++, row["id"], row["product_id"], row["supplier_name"], row["quantity"], row["date"]);
+                guna2DataGridView1.Rows.Add(i++, row["id"], row["product_name"], row["supplier_name"], row["quantity"], row["date"]);
             }
 
         }
